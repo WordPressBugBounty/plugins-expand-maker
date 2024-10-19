@@ -1,87 +1,51 @@
 === Read More & Accordion ===
-Contributors: edmon.parker
-Tags: read more ,expander, Accordion, show more
-Requires at least: 3.8
-Tested up to: 6.5
-Stable tag: 3.3.9
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Contributors: edmon.parker  
+Tags: read more, accordion, content toggle, expand content  
+Requires at least: 3.8  
+Tested up to: 6.5  
+Stable tag: 3.3.9  
+License: GPLv2 or later  
+License URI: http://www.gnu.org/licenses/gpl-2.0.html  
 
-The best WordPress "Read more" plugin to help you show or hide your long content by button, accordion, and popups.
+Easily hide or reveal long content with Read More buttons, accordions, and popups. Streamline your WordPress site's layout while enhancing user experience and SEO.
 
 == Description ==
-Read More is the best WordPress **Read More** plugin to help you show or hide your long content.
+The **Read More & Accordion** plugin is a flexible tool designed to help you manage lengthy content by using expandable "Read More" buttons, accordions, or popups. This keeps your site visually clean and easy to navigate while still providing access to all your information.
 
-With the help of **Read More** plugin you can make website with long content more beautiful. The part of the page you don`t want to see immediately,will be hidden after inserting it in the short code and will open by clicking the button.
-Use it to toggle (show/hide) blocks of text, by inserting a simple shortcode:
+Ideal for creating FAQs, managing long blog posts, or showing detailed descriptions in an organized format, the plugin makes it easy for users to interact with your content. Plus, the plugin enhances SEO as search engines can index all your hidden content.
 
-Read More by Edmon is a WordPress plugin that allows you include text which won't be visible to users unless they press "Read More" button.
-Its purpose is to boost your SEO and your visitors' experience, by allowing you to include tons of data readable by search engines, without affecting your visitors in a negative way.
+== Features ==
+- **Read More Buttons:** Collapse or expand content using customizable buttons.
+- **Accordions:** Organize content into expandable sections for streamlined viewing.
+- **Inline and Link Options:** Choose how to display hidden content—either inline or with a link.
+- **Button Customization:** Easily change button styles, including width, height, and font size.
+- **Animation Controls:** Set custom animation speeds for smoother user interaction.
 
-With the read more you can also create Accordions to show your FAQ and more. The accordion can improve your website UX.
+== PRO Features ==
+Upgrade to the PRO version to access these additional features:
+- **Custom Colors & Fonts:** Personalize buttons with unique colors and font styles, including hover effects.
+- **Popup Display:** Display hidden content in popups, customizable with various settings.
+- **Mobile Optimization:** Show "Read More" buttons only on mobile devices for an optimized experience.
+- **Advanced Popup Controls:** Manage overlay colors, padding, and close options for a seamless popup experience.
+- **Login & Registration Forms:** Add forms within popups for enhanced user engagement.
 
-How to create read more popup example
+== How to Use ==
+Insert the shortcode `[expander_maker more="Read more" less="Read less"]Your hidden content here[/expander_maker]` to quickly toggle content visibility with a Read More button.
 
-https://www.youtube.com/watch?v=Iz8U2Ly-VN8
+Want to explore advanced features? Watch our tutorials:
+- [How to Create a Read More Popup](https://www.youtube.com/watch?v=Iz8U2Ly-VN8)  
+- [How to Add a Read More Button](https://www.youtube.com/watch?v=ML9Xmbs0TvU)
 
-How to create read more button
+== Support & Customization ==
+Need help? Contact us at **edmon.parker@gmail.com** for support or custom development inquiries.
 
-https://www.youtube.com/watch?v=ML9Xmbs0TvU
-
-** Read more - Features: **
-
-* Button type
-* Inline Type
-* Link button type
-* Link type
-* Accordion type
-* Find And Replace type
-* Button dimension mode
-* Button width - button custom dimension
-* Button height - button custom dimension
-* Button auto mode padding
-* Font size - button custom font size
-* Expand animation duration - Expand custom animation duration
-
-** Read more - PRO features: **
-
-* button background color - custom color.
-* button font family - button font family from google fonts.
-* button color - button text custom color.
-* button border radius - button border radius.
-* button horizontal alignment - button horizontal alignment.
-* button vertical alignment - button vertical alignment.
-* button vertical alignment - button vertical alignment.
-* more only on mobile devices - after activating this option, Read more will be shown only on mobile devices.
-* button background color on hover effect - after mouse hover effect read more button change background color.
-* button text color on hover effect - after mouse hover effect read more button change text color.
-* Auto open
-* Popup type
-* Popup width
-* Popup height
-* Popup max width
-* Popup max height
-* Popup initial width
-* Popup initial height
-* Popup show close button
-* Popup dismiss on overlay click
-* Popup dismiss on esc key
-* Popup overlay color
-* Popup content color
-* Popup content padding
-* Login adn Registration forms
-
-<a href="https://edmonsoft.com" target="_blank" >Get Read More PRO package</a>
-
-Shortcode example:
-[expander_maker more="Read more" less="Read less"]Hidden text[/expander_maker]
-
-
-We do web development and if you need a developer or if you think you have found a bug in Read more plugin, if you have any question, please feel free to contact us by this email <b>edmon.parker@gmail.com</b>.
 
 == Changelog ==
+= 3.3.9.6 =
+* Fixed accordion type hover event fixes
+
 = 3.3.9.5 =
-* Added PHP Warnings fix
+* Resolved PHP Warnings fix
 
 = 3.3.9.4 =
 * Added accordion content type Video

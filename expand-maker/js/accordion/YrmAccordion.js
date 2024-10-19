@@ -12,67 +12,101 @@ YrmAccordion.start = function () {
 }
 
 YrmAccordion.prototype.init = function () {
-	var event = 'click';
-	var that = this;
+    var event = this.options['yrm-accordion-activate-event'] || 'click';
+    var easings = this.options['yrm-accordion-animate-easings'];
+    var duration = parseInt(this.options['yrm-accordion-animate-duration'], 10);
+    var keepOpen = this.options['yrm-accordion-keep-extended'] === true;
+    var enableClickSound = this.options['yrm-accordion-toggle-sound'];
+    var scrollToActive = this.options['yrm-accordion-scroll-to-active-item'];
 
-	if (this.options['yrm-accordion-activate-event']) {
-		event = this.options['yrm-accordion-activate-event'];
-	}
-	var easings = this.options['yrm-accordion-animate-easings'];
-	var duration = parseInt(this.options['yrm-accordion-animate-duration']);
+    var audio;
+    if (enableClickSound && this.options['sound-url']) {
+        audio = new Audio(this.options['sound-url']);
+    }
 
-	var keepOpen = true;
-	if (typeof this.options['yrm-accordion-keep-extended']) {
-		keepOpen = this.options['yrm-accordion-keep-extended'];
-	}
+    // Cache commonly used DOM elements
+    var $accordionItems = jQuery('.yrm-accordion-item');
+    var $accordionItemHeaders = jQuery('.yrm-accordion-item-header');
 
-	var enableClickSound = this.options['yrm-accordion-toggle-sound'];
-	var scrollToActive = this.options['yrm-accordion-scroll-to-active-item'];
-	if (scrollToActive) {
-		jQuery([document.documentElement, document.body]).animate({
-			scrollTop: jQuery(".yrm-accordion-item[data-expanded='1']").first().offset().top
-		}, 1000)
-	}
+    // Scroll to active item if the option is enabled
+    if (scrollToActive) {
+        var $firstExpandedItem = $accordionItems.filter("[data-expanded='1']").first();
+        if ($firstExpandedItem.length) {
+            jQuery([document.documentElement, document.body]).animate({
+                scrollTop: $firstExpandedItem.offset().top
+            }, 1000);
+        }
+    }
 
-	jQuery('.yrm-accordion-item-header').unbind(event).bind(event, function (e) {
-		if (enableClickSound) {
-			const audio = new Audio(that.options['sound-url']);
-			audio.play()
-		}
-		e.preventDefault();
-		var parentItem = jQuery(this).parents('.yrm-accordion-item').first();
-		var statusExpanded = Boolean(parentItem.data('expanded'));
+    // Retrieve icons only once, not on every click
+    var $accordionWrapper = jQuery(".yrm-accordion-wrapper");
+    var icons = $accordionWrapper.data('options')['yrm-accordion-icons'].split('_');
+    var openClass = icons[0];
+    var closeClass = icons[1];
 
-		var accordionContent = parentItem.find('.yrm-accordion-item-content');
-		var icons = jQuery(this).parents(".yrm-accordion-wrapper").data('options')['yrm-accordion-icons'];
-		var splittedIcons = icons.split('_');
-		var openClass = splittedIcons[0];
-		var closeClass = splittedIcons[1];
+    // Helper function to toggle accordion items
+    function toggleAccordion($parentItem, isOpen) {
+        var $accordionContent = $parentItem.find('.yrm-accordion-item-content');
+        if (!isOpen) {
+            // Close other items if keepOpen is false
+            if (!keepOpen) {
+                $accordionItems.removeClass('yrm-opened').data('expanded', 0);
+                $accordionItems.find('.accordion-header-icon').removeClass(closeClass).addClass(openClass);
+                $accordionItems.find('.yrm-accordion-item-content').slideUp(duration, easings);
+            }
 
-		if (!statusExpanded) {
-			if (keepOpen == 'false') {
-				jQuery('.yrm-accordion-item').data('expanded', false);
-				//jQuery('.yrm-accordion-item .accordion-header-icon').removeClass('yrm-rotate-90');
-				jQuery('.yrm-accordion-item .yrm-accordion-item-content').slideUp(duration, easings, function () {
+            // Open the clicked/hovered accordion item
+            $parentItem.addClass('yrm-opened').data('expanded', 1);
+            $parentItem.find('.accordion-header-icon').removeClass(openClass).addClass(closeClass);
+            $accordionContent.slideDown(duration, easings);
+        } else {
+            // Close the clicked/hovered accordion item
+            $parentItem.removeClass('yrm-opened').data('expanded', 0);
+            $parentItem.find('.accordion-header-icon').removeClass(closeClass).addClass(openClass);
+            $accordionContent.slideUp(duration, easings);
+        }
+    }
 
-				});
-			}
-			parentItem.addClass('yrm-opened')
-			parentItem.find('.accordion-header-icon').removeClass(openClass).addClass(closeClass)
-			accordionContent.slideToggle(duration, easings, function () {
-				parentItem.data('expanded', true);
+    // Debounce function to prevent multiple quick triggers
+    function debounce(func, wait) {
+        let timeout;
+        return function () {
+            const context = this, args = arguments;
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func.apply(context, args), wait);
+        };
+    }
 
-			});
-		}
-		else {
-			parentItem.removeClass('yrm-opened')
-			parentItem.find('.accordion-header-icon').removeClass(closeClass).addClass(openClass)
-			accordionContent.removeClass('yrm-show')
-			accordionContent.slideUp(duration, easings, function () {
-				parentItem.data('expanded', false);
-			});
-		}
-	})
+    // Unbind any previous events to avoid double binding
+    $accordionItemHeaders.unbind(event).bind(event, function (e) {
+        e.preventDefault();
+        var $parentItem = jQuery(this).closest('.yrm-accordion-item');
+        var isExpanded = $parentItem.data('expanded') === 1;
+
+        // Play sound if enabled
+        if (enableClickSound && audio) {
+            audio.play();
+        }
+
+        toggleAccordion($parentItem, isExpanded);
+    });
+
+    // If 'mouseover' is the event, handle it separately and debounce it
+    if (event === 'mouseover') {
+        // Apply mouseover and mouseleave to the entire accordion item (header + content)
+        $accordionItems.unbind('mouseover mouseleave').on('mouseover', debounce(function () {
+            var $parentItem = jQuery(this);
+            var isExpanded = $parentItem.data('expanded') === 1;
+            if (!isExpanded) {
+                toggleAccordion($parentItem, isExpanded);
+            }
+        }, 200)).on('mouseleave', debounce(function () {
+            var $parentItem = jQuery(this);
+            if ($parentItem.data('expanded') === 1) {
+                toggleAccordion($parentItem, true);
+            }
+        }, 200));
+    }
 }
 
 jQuery(document).ready(function () {
