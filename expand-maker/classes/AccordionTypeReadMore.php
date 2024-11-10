@@ -54,6 +54,7 @@ class AccordionTypeReadMore extends ReadMoreTypes {
 		$options[] = array('name' => 'yrm-accordion-icons-size', 'type' => 'text', 'defaultValue' => '18px');
 		$options[] = array('name' => 'yrm-accordion-before-content', 'type' => 'yrm', 'defaultValue' => '');
 		$options[] = array('name' => 'yrm-accordion-after-content', 'type' => 'yrm', 'defaultValue' => '');
+		$options[] = array('name' => 'yrm-accordion-click-sound', 'type' => 'yrm', 'defaultValue' => YRM_SOUNDS_URL."/click.mp3");
 
 		return $options;
 	}

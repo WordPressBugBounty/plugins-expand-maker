@@ -177,11 +177,26 @@ $allowedTag = ReadMoreAdminHelper::getAllowedTags();
 			<div class="col-md-6">
 				<div class="yrm-switch-wrapper">
 					<label class="yrm-switch">
-						<input type="checkbox" name="yrm-toggle-sound" id="yrm-toggle-sound" class="" <?php echo esc_attr($savedObj->getOptionValue('yrm-toggle-sound', true)); ?>>
+						<input type="checkbox" name="yrm-toggle-sound" id="yrm-toggle-sound" class="yrm-accordion-checkbox" <?php echo esc_attr($savedObj->getOptionValue('yrm-toggle-sound', true)); ?>>
 						<span class="yrm-slider yrm-round"></span>
 					</label>
 				</div>
 			</div>
+		</div>
+		<div class="yrm-accordion-content yrm-hide-content">
+			<div class="row form-group">
+				<div class="col-md-5">
+					<input id="js-upload-sound-button" class="button js-countdown-image-btn" type="button" value="<?php _e('Select sound', YCD_TEXT_DOMAIN)?>">
+					<input type="button" data-default-song="<?php echo esc_attr(YRM_SOUNDS_URL."/click.mp3"); ?>" id="js-reset-to-click-sound" class="btn btn-sm btn-danger" value="<?php _e('Reset', YCD_TEXT_DOMAIN); ?>"> 
+				</div>
+				
+				<div class="col-md-5 ycd-circles-width-wrapper">
+					<input type="url" name="yrm-button-click-sound" id="ycd-button-sound-url" class="form-control" value="<?php echo esc_attr($savedObj->getOptionValue('yrm-button-click-sound')); ?>">
+				</div>
+				<div class="col-md-1">
+					<span class="dashicons dashicons-controls-volumeon js-preview-button-click-sound"></span>
+				</div>
+        	</div>
 		</div>
         <!-- Tooltip option start -->
         <div class="row row-static-margin-bottom">

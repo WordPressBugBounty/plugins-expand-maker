@@ -54,6 +54,86 @@ yrmBackend.prototype.init = function() {
 
 	this.accordionTypeSwitcher()
 	this.colors();
+	this.soundUpload();
+};
+
+yrmBackend.prototype.soundUpload = function() {
+	var custom_uploader;
+	jQuery('#js-upload-sound-button').click(function(e) {
+		e.preventDefault();
+
+		/* If the uploader object has already been created, reopen the dialog */
+		if (custom_uploader) {
+			custom_uploader.open();
+			return;
+		}
+
+		/* Extend the wp.media object for audio files */
+		custom_uploader = wp.media.frames.file_frame = wp.media({
+			title: 'Choose Sound',
+			button: {
+				text: 'Choose Sound'
+			},
+			multiple: false,
+			library: {
+				type: 'audio' // Restrict to audio files
+			}
+		});
+
+		/* When a file is selected, grab the URL and set it as the text field's value */
+		custom_uploader.on('select', function() {
+			var attachment = custom_uploader.state().get('selection').first().toJSON();
+			var soundURL = jQuery('#ycd-button-sound-url');
+			soundURL.val(attachment.url);
+			soundURL.trigger('change');
+		});
+
+		/* Open the uploader dialog */
+		custom_uploader.open();
+	});
+
+	/* Audio uploader complete */
+    jQuery('#js-reset-to-click-sound').bind('click', function() {
+        jQuery('#ycd-button-sound-url').val(jQuery(this).data('default-song'))
+    })
+    this.soundPreview();
+};
+
+yrmBackend.prototype.soundPreview = function()  {
+	var songValue = 1;
+	var lastSong;
+	var isPlaying = false;
+
+	jQuery('.js-preview-button-click-sound').bind('click', function() {
+		var uploadFile = jQuery('#ycd-button-sound-url').val();
+
+		// Initialize lastSong only if it's not already created
+		if (!lastSong) {
+			lastSong = new Audio(uploadFile);
+		}
+
+		// Toggle play and pause based on songValue
+		if (songValue === 1 && !isPlaying) {
+			isPlaying = true;
+			lastSong.play().then(() => {
+				songValue = 2;
+			}).catch(error => {
+				console.error("Playback failed: ", error);
+			});
+			console.log("start play");
+		} else if (songValue === 2 && isPlaying) {
+			lastSong.pause();
+			isPlaying = false;
+			songValue = 1;
+		}
+
+		// When the song ends, reset songValue and lastSong
+		lastSong.onended = function() {
+			isPlaying = false;
+			lastSong = null;
+			songValue = 1;
+		};
+	});
 };
 
 yrmBackend.prototype.colors = function () {

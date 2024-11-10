@@ -1398,6 +1398,7 @@ class ReadMoreData {
 			'less-button-title' => __('Less more', YRM_LANG),
 			'yrm-dimension-mode' => 'classicMode',
 			'yrm-button-padding-top' => '0',
+			'yrm-button-click-sound' => YRM_SOUNDS_URL."/click.mp3",
 			'yrm-button-padding-right' => '0',
 			'yrm-button-padding-bottom' => '0',
 			'yrm-button-padding-left' => '0',

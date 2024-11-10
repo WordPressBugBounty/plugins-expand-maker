@@ -107,7 +107,7 @@ class ReadMoreAccordionView {
 		foreach ($names as $name) {
 			$options[$name] = $typeObj->getOptionValue($name);
 		}
-        $options['sound-url'] = YRM_SOUNDS_URL."/click.mp3";
+        $options['sound-url'] = $typeObj->getOptionValue('yrm-accordion-click-sound');
 		return $options;
 	}
 

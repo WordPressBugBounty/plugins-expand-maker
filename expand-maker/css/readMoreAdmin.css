@@ -1251,3 +1251,9 @@ label.yrm-label {
 .accordion-popup-general .yrm-tooltip {
 	display: none;
 }
+
+.js-preview-button-click-sound {
+	color: blue;
+    margin-top: 7px;
+    cursor: pointer;
+}

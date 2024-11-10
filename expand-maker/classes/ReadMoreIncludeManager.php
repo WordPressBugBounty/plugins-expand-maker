@@ -226,9 +226,10 @@ class ReadMoreIncludeManager {
 
 		$id = $this->getId();
 		$savedData = $this->getData();
-		$savedData['sound-url'] = YRM_SOUNDS_URL."/click.mp3";
-
 		$dataObj = $this->getDataObj();
+		$savedData['sound-url'] = $dataObj->getOptionValue('yrm-button-click-sound');
+
+
 		$type = $savedData['type'];
 		$scripts = '';
 

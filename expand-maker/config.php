@@ -153,6 +153,7 @@ if(!class_exists('YrmConfig')) {
             $this->addDefine('YRM_ADMIN_CSS_GENERAL_URL', YRM_ADMIN_CSS_URL . 'general/');
             $this->addDefine('YRM_TYPES_PAGE_URL', admin_url()."admin.php?page=addNew");
 			$this->addDefine('YRM_ACCORDION_PAGE_URL', admin_url()."admin.php?page=button&yrm_type=accordion");
+			$this->addDefine('YRM_SOUNDS_URL', YRM_URL."/sounds");
 
 			if(!defined('YRM_IMG_URL')) {
 				define('YRM_IMG_URL', YRM_URL . 'img/');
@@ -162,9 +163,9 @@ if(!class_exists('YrmConfig')) {
 				define('YRM_LANG', 'yrm_lang');
 			}
 
-			$this->addDefine('EXPM_VERSION', 3.394);
-			$this->addDefine('YRM_VERSION_TEXT', '3.3.9.4');
-			$this->addDefine('EXPM_VERSION_PRO', 2.394);
+			$this->addDefine('EXPM_VERSION', 3.397);
+			$this->addDefine('YRM_VERSION_TEXT', '3.3.9.7');
+			$this->addDefine('EXPM_VERSION_PRO', 2.397);
 			$this->addDefine('YRM_ADMIN_POST_NONCE', 'YRM_ADMIN_POST_NONCE');
 
 			$this->addDefine('YRM_FREE_PKG', 1);
