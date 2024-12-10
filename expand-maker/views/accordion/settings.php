@@ -118,8 +118,8 @@
 		<div class="yrm-accordion-content yrm-hide-content">
 			<div class="row form-group">
 				<div class="col-md-5">
-					<input id="js-upload-sound-button" class="button js-countdown-image-btn" type="button" value="<?php _e('Select sound', YCD_TEXT_DOMAIN)?>">
-					<input type="button" data-default-song="<?php echo esc_attr(YRM_SOUNDS_URL."/click.mp3"); ?>" id="js-reset-to-click-sound" class="btn btn-sm btn-danger" value="<?php _e('Reset', YCD_TEXT_DOMAIN); ?>"> 
+					<input id="js-upload-sound-button" class="button js-countdown-image-btn" type="button" value="<?php _e('Select sound', YRM_LANG)?>">
+					<input type="button" data-default-song="<?php echo esc_attr(YRM_SOUNDS_URL."/click.mp3"); ?>" id="js-reset-to-click-sound" class="btn btn-sm btn-danger" value="<?php _e('Reset', YRM_LANG); ?>"> 
 				</div>
 				
 				<div class="col-md-5 ycd-circles-width-wrapper">

@@ -41,6 +41,9 @@ Need help? Contact us at **edmon.parker@gmail.com** for support or custom develo
 
 
 == Changelog ==
+= 3.3.9.8 =
+* Fix PHP Warnings
+
 = 3.3.9.7 =
 * Added possibility change read more click sound
 * Added possibility change accordion click sound
