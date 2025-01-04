@@ -6,22 +6,23 @@ $checkIsChecked = function ($optionName) {
 $userRoles = $params['userRoles'];
 $allowedTag = ReadMoreAdminHelper::getAllowedTags();
 ?>
-<div class="ycf-bootstrap-wrapper yrm-settings">
+
 	<?php if(!empty($_GET['saved'])) : ?>
 		<div id="default-message" class="updated notice notice-success is-dismissible">
-			<p><?php echo _e('Settings saved.', YRM_LANG);?></p><button type="button" class="notice-dismiss"><span class="screen-reader-text"><?php echo _e('Dismiss this notice.', YRM_LANG);?></span></button>
+			<p><?php echo esc_html__('Settings saved.', YRM_LANG);?></p><button type="button" class="notice-dismiss"><span class="screen-reader-text"><?php echo esc_html__('Dismiss this notice.', YRM_LANG);?></span></button>
 		</div>
 	<?php endif; ?>
+    <div class="ycf-bootstrap-wrapper yrm-settings">
 <div class="row">
 	<div class="col-md-6">
-        <form action="<?php echo admin_url().'admin-post.php?action=yrmSaveSettings'?>" method="post">
+        <form action="<?php echo esc_url(admin_url().'admin-post.php?action=yrmSaveSettings')?>" method="post">
         <?php wp_nonce_field('YRM_ADMIN_POST_NONCE', YRM_ADMIN_POST_NONCE);?>
 		<div class="panel panel-default">
 			<div class="panel-heading"><?php _e('Settings', YRM_LANG);?></div>
 			<div class="panel-body">
                 <div class="row form-group">
                     <div class="col-md-4">
-                        <label class="ycd-label-of-switch" for="yrm-delete-data"><?php _e('Remove Settings', YRM_LANG); ?></label>
+                        <label class="ycd-label-of-switch" for="yrm-delete-data"><?php echo esc_html__('Remove Settings', YRM_LANG); ?></label>
                     </div>
                     <div class="col-md-2">
                         <div class="yrm-switch-wrapper">
@@ -39,7 +40,7 @@ $allowedTag = ReadMoreAdminHelper::getAllowedTags();
                 </div>
                 <div class="row form-group">
                     <div class="col-md-4">
-                        <label class="ycd-label-of-switch" for="yrm-hid-find-and-replace-menu"><?php _e('Hide Find And Replace Menu', YRM_LANG); ?></label>
+                        <label class="ycd-label-of-switch" for="yrm-hid-find-and-replace-menu"><?php echo esc_html__('Hide Find And Replace Menu', YRM_LANG); ?></label>
                     </div>
                     <div class="col-md-2">
                         <div class="yrm-switch-wrapper">
@@ -52,7 +53,7 @@ $allowedTag = ReadMoreAdminHelper::getAllowedTags();
                 </div>
 				<div class="row form-group">
 					<div class="col-md-4">
-						<label class="ycd-label-of-switch" for="yrm-hid-accordion-menu"><?php _e('Hide Accordion Menu', YRM_LANG); ?></label>
+						<label class="ycd-label-of-switch" for="yrm-hid-accordion-menu"><?php echo esc_html__('Hide Accordion Menu', YRM_LANG); ?></label>
 					</div>
 					<div class="col-md-2">
 						<div class="yrm-switch-wrapper">
@@ -65,7 +66,7 @@ $allowedTag = ReadMoreAdminHelper::getAllowedTags();
 				</div>
 				<div class="row form-group">
                     <div class="col-md-4">
-                        <label class="ycd-label-of-switch" for="yrm-hide-media-buttons"><?php _e('Hide media buttons', YRM_LANG); ?></label>
+                        <label class="ycd-label-of-switch" for="yrm-hide-media-buttons"><?php echo esc_html__('Hide media buttons', YRM_LANG); ?></label>
                     </div>
                     <div class="col-md-2">
                         <div class="yrm-switch-wrapper">
@@ -80,7 +81,7 @@ $allowedTag = ReadMoreAdminHelper::getAllowedTags();
 				<?php if (YRM_PKG > YRM_FREE_PKG): ?>
 				<div class="row form-group">
 					<div class="col-md-4">
-						<label class="ycd-label-of-switch" for="yrm-hide-google-fonts"><?php _e('Do not Include Google Fonts', YRM_LANG); ?></label>
+						<label class="ycd-label-of-switch" for="yrm-hide-google-fonts"><?php echo esc_html__('Do not Include Google Fonts', YRM_LANG); ?></label>
 					</div>
 					<div class="col-md-2">
 						<div class="yrm-switch-wrapper">
@@ -105,7 +106,7 @@ $allowedTag = ReadMoreAdminHelper::getAllowedTags();
 				</div>
                 <div class="row">
                     <div class="col-md-12">
-                        <input type="submit" class="btn btn-primary" value="<?php _e('Save changes', YRM_LANG); ?>">
+                        <input type="submit" class="btn btn-primary" value="<?php echo esc_html__('Save changes', YRM_LANG); ?>">
                     </div>
                 </div>
 			</div>

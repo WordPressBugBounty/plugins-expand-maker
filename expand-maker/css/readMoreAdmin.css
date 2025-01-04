@@ -1257,3 +1257,24 @@ label.yrm-label {
     margin-top: 7px;
     cursor: pointer;
 }
+
+@keyframes idea-pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
+    }
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 0 15px rgba(0, 0, 255, 0.7);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
+    }
+}
+
+.yrm-button-blue {
+    animation: idea-pulse 2s infinite;
+    transition: transform 0.3s ease-in-out;
+	margin-left: 15px !important;
+}
