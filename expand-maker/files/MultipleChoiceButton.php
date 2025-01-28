@@ -161,6 +161,7 @@ class ExpmMultipleChoiceButton {
 		$inputAttrStr = '';
 		$value = '';
 		$checked = '';
+		$fieldClass = '';
 
 		if(!empty($template['fieldWrapperAttr'])) {
 			$parentAttrsStr = $this->createAttrs($template['fieldWrapperAttr']);
@@ -171,6 +172,9 @@ class ExpmMultipleChoiceButton {
 			if(!empty($field['attr']['value'])) {
 				$value = $field['attr']['value'];
 			}
+			if(!empty($field['attr']['class'])) {
+				$fieldClass = $field['attr']['class'];
+			}
 
  			$inputAttrStr = $this->createAttrs($field['attr']);
 		}
@@ -178,9 +182,13 @@ class ExpmMultipleChoiceButton {
 		if($savedValue == $value) {
 			$checked = 'checked';
 		}
+		$allowed_html = ReadMoreAdminHelper::getAllowedTags();
 
-		$label = "<div $parentAttrsStr>";
-		$label .= "<input id='".esc_attr($value)."' $inputAttrStr $checked >";
+		$label = '<div '.wp_kses($parentAttrsStr, $allowed_html).'>';
+		$label .= "<input id='".wp_kses($value, $allowed_html)."' ".wp_kses($inputAttrStr, $allowed_html)." ".esc_attr($checked)." >";
+		$label .=  '<div class="radio-group '.esc_attr($fieldClass).'">
+			<label for='.esc_attr($value).'><span></span></label>
+		</div>';
 		$label .=  '</div>';
 
 		return $label;
@@ -209,9 +217,14 @@ class ExpmMultipleChoiceButton {
 		if (!empty($labelData['name'])) {
 			$labelName = $labelData['name'];
 		}
+		$infoText = '';
+		if (!empty($labelData['infoText'])) {
+			$infoText .= yrm_info($labelData['infoText']);
+		}
+		$allowed_html = ReadMoreAdminHelper::getAllowedTags();
 
-		$label = "<div $parentAttrsStr>";
-		$label .= "<label for='".esc_attr($value)."'>$labelName</label>";
+		$label = '<div '.wp_kses($parentAttrsStr, $allowed_html).'>';
+		$label .= "<label for='".esc_attr($value)."'>".wp_kses($labelName, $allowed_html)."</label>".wp_kses($infoText, $allowed_html);
 		$label .=  '</div>';
 
 		return $label;

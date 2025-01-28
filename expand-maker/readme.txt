@@ -41,6 +41,9 @@ Need help? Contact us at **edmon.parker@gmail.com** for support or custom develo
 
 
 == Changelog ==
+= 3.4.1 =
+* Admin side radio buttons design improrvement
+
 = 3.4.0 =
 * admin side info tooltip fix
 * Settings section improvements
