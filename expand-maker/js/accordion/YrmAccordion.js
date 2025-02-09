@@ -59,6 +59,7 @@ YrmAccordion.prototype.init = function () {
             $parentItem.addClass('yrm-opened').data('expanded', 1);
             $parentItem.find('.accordion-header-icon').removeClass(openClass).addClass(closeClass);
             $accordionContent.slideDown(duration, easings);
+            setTimeout(() => {jQuery('.yrm-accordion-item-content iframe').css({width: jQuery('.yrm-accordion-item-content').width()+'px'})}, 100)
         } else {
             // Close the clicked/hovered accordion item
             $parentItem.removeClass('yrm-opened').data('expanded', 0);

@@ -25,7 +25,7 @@ class ReadMoreAccordionView {
 			$showClass = 'yrm-show';
 		}
 		$contentType = $value['contentType'];
-		$content = do_shortcode($value['content']);
+		$content = '';
 		if ($contentType == 'post' && !yrm_is_free()) {
 			$content = ReadMoreAdminHelperPro::getPostContentById($value['post']);
 		}
@@ -35,6 +35,9 @@ class ReadMoreAccordionView {
 				$height = $value['iframeHeight'];
 			}
 			$content .= "<iframe style='width: 100%;height: ".esc_attr($height)."' src='".esc_attr($this->convert_to_embed_url($value['url']))."'></iframe>";
+		}
+		else {
+			$content = do_shortcode($value['content']);
 		}
 	
 		$iconPosition = $typeObj->getOptionValue('yrm-accordion-icons-position');
