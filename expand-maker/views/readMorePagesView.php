@@ -106,7 +106,7 @@
 						<td><?php echo ReadMoreAdminHelper::getTitleFromType($type); ?></td>
 						<td>
 							<a class="yrm-crud yrm-edit glyphicon glyphicon-edit" href="<?php echo admin_url()."admin.php?page=button&yrm_type=".esc_attr($type)."&readMoreId=".esc_attr($id).""?>"></a>
-							<a class="yrm-crud yrm-delete-link glyphicon glyphicon-remove" data-id="<?php echo esc_attr($id);?>" href="<?php echo admin_url()."admin-post.php?action=delete_readmore&readMoreId=".esc_attr($id).""?>"></a>
+							<a class="yrm-crud yrm-delete-link glyphicon glyphicon-remove" data-id="<?php echo esc_attr($id);?>" href="<?php echo  wp_nonce_url(admin_url("admin.php?page=readMore&action=expmDeleteData&id=" . $id), 'delete_read_more')?>"></a>
 							<a class="yrm-crud yrm-clone-link glyphicon glyphicon-duplicate" href="<?php echo admin_url();?>admin-post.php?action=read_more_clone&id=<?php echo esc_attr($id); ?>" ></a>
 						</td>
 					</tr>

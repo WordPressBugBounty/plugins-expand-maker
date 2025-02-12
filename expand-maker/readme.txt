@@ -41,6 +41,9 @@ Need help? Contact us at **edmon.parker@gmail.com** for support or custom develo
 
 
 == Changelog ==
+= 3.4.3 =
+* Security improvement related to read more deleteion
+
 = 3.4.2 =
 * Fixed Accordion Youtube content render issue
 

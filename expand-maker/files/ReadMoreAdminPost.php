@@ -96,8 +96,17 @@ Class ReadMoreAdminPost {
 	}
 
 	public function expmDeleteData() {
-		
+
 		global $wpdb;
+
+		if (!current_user_can('manage_options')) {
+			wp_die(__('You do not have permission to perform this action.', 'text-domain'));
+		}
+
+		if (!isset($_GET['_wpnonce']) || !wp_verify_nonce($_GET['_wpnonce'], 'delete_read_more')) {
+			wp_die(__('Invalid request.', 'text-domain'));
+		}
+
 		$id = absint($_GET['readMoreId']);
 		$wpdb->delete($wpdb->prefix.'expm_maker', array('id'=>$id), array('%d'));
 		do_action('YrmDeleteReadMore', $id);
