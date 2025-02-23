@@ -39,10 +39,25 @@
 	$allowedTag = ReadMoreAdminHelper::getAllowedTags();
 ?>
 <div class="ycf-bootstrap-wrapper">
-	<div class="wrap">
-		<h2 class="add-new-buttons"><?php _e('Read More', YRM_LANG); ?><a href="<?php echo YRM_TYPES_PAGE_URL;?>" class="add-new-h2"><?php echo _e('Add New', YRM_LANG); ?></a></h2>
-	</div>
+	
 	<div class="expm-wrapper">
+	<div class="seagull-soft-promo" style="background: linear-gradient(135deg, #6a5acd, #3b5998); padding: 30px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); color: white; text-align: center; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; flex-wrap: wrap;">
+		<img src="https://seagull-soft.com/_next/image?url=%2Fimages%2Flogo%2Flogo-white.png&w=384&q=75" alt="Seagull Soft Logo" style="max-width: 150px; margin-right: 20px;">
+		<h3 style="font-size: 24px; font-weight: bold; margin-bottom: 10px;">Seagull Soft - Empowering Your Digital Success</h3>
+		<p style="font-size: 18px; line-height: 1.5; margin-bottom: 20px; width: 100%; text-align: center;">At Seagull Soft, we specialize in creating custom websites, mobile applications, and providing smooth migrations. Our solutions are designed to solve any web-related issues efficiently and help your business thrive online.</p>
+		<a href="https://seagull-soft.com/" class="btn btn-primary" style="background-color: #ff6347; color: white; padding: 12px 25px; border-radius: 5px; text-decoration: none; font-size: 18px; transition: all 0.3s ease-in-out;">Discover Our Services</a>
+	</div>
+
+	<style>
+		.seagull-soft-promo a:hover {
+			background-color: #ff4500; /* Darker shade for hover effect */
+			transform: scale(1.05); /* Slight scaling on hover */
+			box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25); /* Add a shadow effect */
+		}
+	</style>
+		<div class="wrap">
+			<h2 class="add-new-buttons"><?php _e('Read More', YRM_LANG); ?><a href="<?php echo YRM_TYPES_PAGE_URL;?>" class="add-new-h2"><?php echo _e('Add New', YRM_LANG); ?></a></h2>
+		</div>
 		<?php if(YRM_PKG == YRM_FREE_PKG): ?>
 			<div class="main-view-upgrade main-upgreade-wrapper">
 				<?php echo ReadMoreAdminHelper::upgradeButton(); ?>
