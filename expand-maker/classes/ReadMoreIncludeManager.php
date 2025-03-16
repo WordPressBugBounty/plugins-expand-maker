@@ -437,7 +437,7 @@ class ReadMoreIncludeManager {
 			$buttonWidth = (int)$dataObj->getOptionValue('button-width').'px';
 			$buttonHeight = (int)$dataObj->getOptionValue('button-height').'px';
 			$btnBackgroundColor = $dataObj->getOptionValue('btn-background-color');
-			
+
 			$buttonGeneralStyles = '';
 			$buttonGeneralStyles .= '.yrm-button-auto-mode.yrm-toggle-expand-'.esc_attr($id).' {';
 			$buttonGeneralStyles .= 'width: auto !important;';
@@ -452,7 +452,7 @@ class ReadMoreIncludeManager {
 			$buttonGeneralStyles .= 'transform: inherit !important;';
 			$buttonGeneralStyles .= '}';
 
-			$buttonGeneralStyles .= '.yrm-toggle-expand-'.esc_attr($id).' {';
+			$buttonGeneralStyles .= '.yrm-toggle-expand-'.esc_attr($id).':not(.yrm-button-auto-mode) {';
 			$buttonGeneralStyles .= 'width: '.esc_attr($buttonWidth).';';
 			$buttonGeneralStyles .= 'height: '.esc_attr($buttonHeight).';';
 			$buttonGeneralStyles .= 'line-height: 1;';
@@ -487,7 +487,7 @@ class ReadMoreIncludeManager {
 				$shadowSpreadRadius = $dataObj->getOptionValue('button-box-spread-radius').'px';
 				$shadowColor = $dataObj->getOptionvalue('button-box-shadow-color');
 
-					$styles .= '.yrm-toggle-expand.yrm-toggle-expand-'.esc_attr($id).'  {';
+					$styles .= '.yrm-btn-wrapper-'.esc_attr($id).' .yrm-toggle-expand-'.esc_attr($id).'  {';
 					$styles .= "-webkit-box-shadow: ".esc_attr($shadowHorizontal)." ".esc_attr($shadowVertical)." ".esc_attr($shadowBlurRadius)." ".esc_attr($shadowSpreadRadius)." ".esc_attr($shadowColor).";";
 					$styles .= "-moz-box-shadow:".esc_attr($shadowHorizontal)." ".esc_attr($shadowVertical)." ".esc_attr($shadowBlurRadius)." ".esc_attr($shadowSpreadRadius)." ".esc_attr($shadowColor).";";
 					$styles .= "box-shadow: ".esc_attr($shadowHorizontal)." ".esc_attr($shadowVertical)." ".esc_attr($shadowBlurRadius)." ".esc_attr($shadowSpreadRadius)." ".esc_attr($shadowColor).";";

@@ -41,6 +41,10 @@ Need help? Contact us at **edmon.parker@gmail.com** for support or custom develo
 
 
 == Changelog ==
+= 3.4.5 =
+* Fixed toolip and read more align canter issue
+* Improved read more initial load issue
+
 = 3.4.4 =
 * Admin UI improvements
 * Added info about our partner
