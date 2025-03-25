@@ -157,18 +157,20 @@ class ReadMoreAccordionView {
 		$this->enqueScripts();
 		$accordionOptions = $this->getRenderOptions();
 		$allowedTag = ReadMoreAdminHelper::getAllowedTags();
+		$items = 0;
 		ob_start();
 		?>
 		<div class="yrm-accordion-wrapper yrm-accordion-wrapper-<?php echo esc_attr($id) ?>" id="<?php echo esc_attr($this->uniqid); ?>" data-options='<?php echo wp_kses(json_encode($accordionOptions,  JSON_FORCE_OBJECT, JSON_HEX_QUOT), ReadMoreAdminHelper::getAllowedTags())?>'>
 			<?php foreach ($typeObj->getOptionValue('yrm-accordion') as $index => $value): ?>
 				<?php
 					$opened = false;
-					if ($mode == 'firstOpen' && $index == 0) {
+					if ($mode == 'firstOpen' && $items == 0) {
 						$opened = true;
 					}
 					else if ($mode == 'allOpen') {
 						$opened = true;
 					}
+					$items += 1;
 				?>
 				<?php echo wp_kses($this->accordionItem($index, $value, $opened), $allowedTag); ?>
 			<?php endforeach;?>
@@ -176,7 +178,7 @@ class ReadMoreAccordionView {
 		<?php
 		$content = ob_get_contents();
 		ob_end_clean();
-
+		
 		$content .= "<style>".$this->typeObj->getOptionValue('yrm-accordion-custom-css')."</style>";
 		$content .= "<script>".$this->typeObj->getOptionValue('yrm-accordion-custom-js')."</script>";
 

@@ -386,7 +386,6 @@ class ReadMoreIncludeManager {
 			}
 		$generalStyles .= '}';
 
-
 		// general pro styles
 		if(YRM_PKG > 1) {
 			if (!\ReadMoreAdminHelperPro::isMobile()) {
@@ -404,6 +403,10 @@ class ReadMoreIncludeManager {
 			$generalStyles .= 'background-image: url("'.esc_html($buttonIcon).'") '.esc_html($important).';';
 			$generalStyles .= 'background-size: cover;';
 			$generalStyles .= 'vertical-align: middle;';
+			$generalStyles .= '}';
+
+			$generalStyles .= '.yrm-btn-wrapper-'.esc_html($id).' {';
+			$generalStyles .= 'text-align: '.$dataObj->getOptionvalue('horizontal').' !important;';
 			$generalStyles .= '}';
 		}
 		if ($dataObj->getOptionValue('yrm-enable-decoration', true)) {

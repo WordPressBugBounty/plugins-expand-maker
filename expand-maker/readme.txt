@@ -2,8 +2,8 @@
 Contributors: edmon.parker  
 Tags: read more, accordion, content toggle, expand content  
 Requires at least: 3.8  
-Tested up to: 6.7  
-Stable tag: 3.3.9  
+Tested up to: 6.7.2
+Stable tag: 3.4.6 
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -41,6 +41,10 @@ Need help? Contact us at **edmon.parker@gmail.com** for support or custom develo
 
 
 == Changelog ==
+= 3.4.6 =
+* Fixed Accordion first open issue
+* Imporved read more button align
+
 = 3.4.5 =
 * Fixed toolip and read more align canter issue
 * Improved read more initial load issue

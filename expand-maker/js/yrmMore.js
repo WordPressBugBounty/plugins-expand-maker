@@ -25,9 +25,9 @@ YrmMore.prototype.setStyles = function () {
 	var data = this.getData('readMoreData');
 	var id = this.getData('id');
 
-	this.setChengHorizontalAlign(".yrm-btn-wrapper-"+id,data['horizontal']);
+	//this.setChengHorizontalAlign(".yrm-btn-wrapper-"+id,data['horizontal']);
 
-	this.setFontSize(".yrm-button-text-"+id, data['font-size']);
+	//this.setFontSize(".yrm-button-text-"+id, data['font-size']);
 	this.setFontWeight(".yrm-button-text-"+id, data['yrm-btn-font-weight']);
 	if(typeof this.proInit == 'function') {
 		this.proInit();
