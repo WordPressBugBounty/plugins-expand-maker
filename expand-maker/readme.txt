@@ -41,6 +41,10 @@ Need help? Contact us at **edmon.parker@gmail.com** for support or custom develo
 
 
 == Changelog ==
+= 3.4.7 =
+* Fixed Read More Export/Import functionality
+* Added new Group for Read More users
+
 = 3.4.6 =
 * Fixed Accordion first open issue
 * Imporved read more button align

@@ -58,6 +58,13 @@
 		<div class="wrap">
 			<h2 class="add-new-buttons"><?php _e('Read More', YRM_LANG); ?><a href="<?php echo YRM_TYPES_PAGE_URL;?>" class="add-new-h2"><?php echo _e('Add New', YRM_LANG); ?></a></h2>
 		</div>
+		<div class="yrm-export-import-wrapper">
+			<img src="<?php echo YRM_IMG_URL.'ajax.gif'; ?>" class="yrm-spinner yrm-hide-content">
+			<?php if ($total != 0 ): ?>
+				<input type="button" class="yrm-exprot-button button" value="<?php echo  _e('Export', YRM_LANG)?>">
+			<?php endif;?>
+			<input type="button" class="yrm-import-button button" data-ajaxNonce="<?php echo esc_attr($ajaxNonce); ?>" value="<?php echo  _e('Import', YRM_LANG)?>">
+		</div>
 		<?php if(YRM_PKG == YRM_FREE_PKG): ?>
 			<div class="main-view-upgrade main-upgreade-wrapper">
 				<?php echo ReadMoreAdminHelper::upgradeButton(); ?>

@@ -42,6 +42,18 @@
 			<?php endif; ?>
 		</div>
 		<div class="row form-group">
+			<div class="col-md-12">
+				<label><?php _e('Join our Telegram Group')?></label>
+			</div>
+			<div class="col-md-12">
+				<div class="yrm-tooltip" style="display: block !important;">
+					<span class="yrm-tooltiptext" id="yrm-tooltip"><?php _e('Copy to clipboard', YRM_LANG)?></span>
+					<input type="text" id="expm-shortcode-info-div" class="widefat" readonly="readonly" value='<?php echo esc_attr("@wpReadMore"); ?>'>
+				</div>
+			</div>
+		</div>
+		<div class="yrm-telegram-image"></div>
+		<div class="row form-group">
 			<div class="col-md-6">
 				<label><?php _e('More Button CSS Class Name')?></label>
 			</div>

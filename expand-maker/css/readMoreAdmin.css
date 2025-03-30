@@ -1320,3 +1320,14 @@ label.yrm-label {
 	align-items: center;
 }
   /*Radio buttons css End*/
+
+.yrm-telegram-image {
+	margin-top: 10px;
+    width: 100%;
+    height: 200px;
+    background-image: url(../img/telegram.jpeg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+	margin-bottom: 10px;
+}

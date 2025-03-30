@@ -61,12 +61,69 @@ class RadMoreAjax {
 
 	public function importData()
 	{
+		check_ajax_referer('YrmNonce', 'ajaxNonce');
 
+		if (!isset($_POST['attachmentUrl']) || !is_string($_POST['attachmentUrl'])) {
+			wp_send_json_error('Invalid attachment URL.');
+		}
+
+		$url = esc_url_raw($_POST['attachmentUrl']);
+
+		if (!filter_var($url, FILTER_VALIDATE_URL)) {
+			wp_send_json_error('Invalid URL format.');
+		}
+
+		$contents = unserialize(base64_decode(file_get_contents($url)));
+
+		if (!is_array($contents)) {
+			wp_send_json_error('Invalid data format.');
+		}
+
+		global $wpdb;
+		$wpdb->show_errors(false); // Disable showing errors to end-users
+
+		foreach ($contents as $tableName => $tableData) {
+			if (!is_array($tableData)) {
+				continue;
+			}
+
+			foreach ($tableData as $rowData) {
+				if (!is_array($rowData)) {
+					continue;
+				}
+
+				$insertResult = $wpdb->insert($wpdb->prefix . $tableName, $rowData);
+
+				if ($insertResult === false) {
+					// Log the error or handle it as needed
+					error_log('Failed to insert data into table: ' . $wpdb->prefix . $tableName);
+				}
+			}
+		}
+
+		wp_send_json_success('Data import successful.');
 	}
 
 
 	public function exportData() {
-
+		check_ajax_referer('YrmNonce', 'ajaxNonce');
+		global $wpdb;
+		$data = array();
+		
+		$tables = array('expm_maker', 'expm_maker_pages');
+		
+		foreach ($tables as $table) {
+			$dataSql = 'SELECT * FROM '.$wpdb->prefix.$table;
+			$getAllData = $wpdb->get_results($dataSql, ARRAY_A);
+			$currentTable = array();
+			foreach ($getAllData as $currentData) {
+				$currentTable[] =  $currentData;
+			}
+			$data[$table] = $currentTable;
+		}
+		
+		print base64_encode(serialize($data));
+		wp_die();
 	}
 	
 	public function deleteRm() {
