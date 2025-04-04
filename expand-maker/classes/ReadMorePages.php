@@ -51,18 +51,21 @@ Class ReadMorePages {
 	public function addNewButtons() {
 
 		global $YrmRemoveOptions;
+		global $YRM_TYPES;
 
 		$id = @(int)$_GET['readMoreId'];
 		$type = 'button';
-
+		
 		if(!empty($_GET['yrm_type'])) {
 			$type = esc_attr($_GET['yrm_type']);
 		}
-
+		if (empty($YRM_TYPES['typesGroupList'][$type])) {
+			return;
+		}
 		$className = ucfirst($type).'TypeReadMore';
 
 		$classPaths = YRM_CLASSES;
-		global $YRM_TYPES;
+		
 		global $YRM_EXTENSIONS;
 
 		if(!empty($YRM_TYPES[$type])) {

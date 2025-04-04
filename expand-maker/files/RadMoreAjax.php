@@ -73,14 +73,21 @@ class RadMoreAjax {
 			wp_send_json_error('Invalid URL format.');
 		}
 
-		$contents = unserialize(base64_decode(file_get_contents($url)));
+		$response = wp_remote_get($url);
 
-		if (!is_array($contents)) {
+		if (is_wp_error($response)) {
+			wp_send_json_error('Failed to fetch the file.');
+		}
+
+		$body = wp_remote_retrieve_body($response);
+		$contents = json_decode($body, true);
+
+		if (json_last_error() !== JSON_ERROR_NONE || !is_array($contents)) {
 			wp_send_json_error('Invalid data format.');
 		}
 
 		global $wpdb;
-		$wpdb->show_errors(false); // Disable showing errors to end-users
+		$wpdb->show_errors(false);
 
 		foreach ($contents as $tableName => $tableData) {
 			if (!is_array($tableData)) {
@@ -95,7 +102,6 @@ class RadMoreAjax {
 				$insertResult = $wpdb->insert($wpdb->prefix . $tableName, $rowData);
 
 				if ($insertResult === false) {
-					// Log the error or handle it as needed
 					error_log('Failed to insert data into table: ' . $wpdb->prefix . $tableName);
 				}
 			}
@@ -103,6 +109,7 @@ class RadMoreAjax {
 
 		wp_send_json_success('Data import successful.');
 	}
+
 
 
 	public function exportData() {
@@ -116,15 +123,19 @@ class RadMoreAjax {
 			$dataSql = 'SELECT * FROM '.$wpdb->prefix.$table;
 			$getAllData = $wpdb->get_results($dataSql, ARRAY_A);
 			$currentTable = array();
+	
 			foreach ($getAllData as $currentData) {
-				$currentTable[] =  $currentData;
+				$currentTable[] = $currentData;
 			}
+	
 			$data[$table] = $currentTable;
 		}
-		
-		print base64_encode(serialize($data));
+	
+		// Set correct content headers if downloading
+		header('Content-Type: application/json');
+		echo json_encode($data, JSON_PRETTY_PRINT);
 		wp_die();
-	}
+	}	
 	
 	public function deleteRm() {
 

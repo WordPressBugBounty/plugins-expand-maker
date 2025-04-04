@@ -2,7 +2,7 @@
 Contributors: edmon.parker  
 Tags: read more, accordion, content toggle, expand content  
 Requires at least: 3.8  
-Tested up to: 6.7.2
+Tested up to: 6.7  
 Stable tag: 3.4.6 
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html  
@@ -41,6 +41,12 @@ Need help? Contact us at **edmon.parker@gmail.com** for support or custom develo
 
 
 == Changelog ==
+= 3.4.8.1 =
+* Added Security improrvement during export/import
+
+= 3.4.8 =
+* Added Secruity fix
+
 = 3.4.7 =
 * Fixed Read More Export/Import functionality
 * Added new Group for Read More users
