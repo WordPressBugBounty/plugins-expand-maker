@@ -12,7 +12,7 @@ Class ExpmJs {
 		wp_register_script('readMoreJs', YRM_JAVASCRIPT.'yrmMore.js', array(), EXPM_VERSION);
 		wp_register_script('yrmMorePro', YRM_JAVASCRIPT.'yrmMorePro.js', array('readMoreJs'), EXPM_VERSION);
 		wp_register_script('yrmselect2', YRM_JAVASCRIPT.'select2.js', array(), EXPM_VERSION);
-		wp_register_script('yrmBackend', YRM_JAVASCRIPT.'yrmBackend.js', array('wp-color-picker'), EXPM_VERSION);
+		wp_register_script('yrmBackend', YRM_JAVASCRIPT.'yrmBackend.js', array('wp-color-picker', 'jquery-ui-core'), EXPM_VERSION);
 		wp_register_script('yrmBackendPro.js', YRM_JAVASCRIPT.'yrmBackendPro.js', array('wp-color-picker'), EXPM_VERSION);
 		wp_register_script('ConditionBuilder.js', YRM_ADMIN_JAVASCRIPT.'ConditionBuilder.js', array(), EXPM_VERSION);
 		wp_register_script('ionRangeSlider.js', YRM_JAVASCRIPT.'ionRangeSlider.js', array('wp-color-picker'), EXPM_VERSION);
@@ -46,6 +46,8 @@ Class ExpmJs {
 			wp_enqueue_script('yrmselect2');
 			wp_enqueue_script('ionRangeSlider.js');
 			wp_enqueue_script('yrmBackend');
+			wp_enqueue_script('jquery-ui-datepicker');
+			wp_enqueue_style('jquery-ui-css');
 			wp_enqueue_script('ConditionBuilder.js');
 			$ajaxNonce = wp_create_nonce("YrmNonce");
 			wp_localize_script('yrmBackend', 'yrmBackendData', array(

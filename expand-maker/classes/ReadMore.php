@@ -91,6 +91,13 @@ abstract class ReadMore {
 			return false;
 		}
 
+		if (!yrm_is_free()) {
+			require_once(dirname(__FILE__)."/ReadMoreProChecker.php");
+			if (!ReadMoreProChecker::checkDateRange($savedData)) {
+				return false;
+			}
+		}
+
 		$allowForBlogPost = self::allowForBlogPostPage($options);
         if(!$allowForBlogPost) {
             return false;

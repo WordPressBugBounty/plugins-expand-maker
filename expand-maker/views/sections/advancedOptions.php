@@ -413,7 +413,45 @@ $allowedTag = ReadMoreAdminHelper::getAllowedTags();
 				<div class="col-xs-2"><?php echo __('Sec', YRM_LANG); ?></div>
 			</div>
 		</div>
-
+		<div class="row row-static-margin-bottom">
+			<div class="col-xs-5">
+				<label class="control-label-checkbox" for="yrm-show-date-range"><?php _e('Show On Date Range', YRM_LANG);?>:</label>
+			</div>
+			<div class="col-xs-4">
+                <div class="yrm-switch-wrapper">
+                    <label class="yrm-switch">
+                        <input type="checkbox" name="yrm-show-date-range" id="yrm-show-date-range" class="yrm-accordion-checkbox" <?php echo esc_attr($savedObj->getOptionValue('yrm-show-date-range', true)); ?>>
+                        <span class="yrm-slider yrm-round"></span>
+                    </label>
+                </div>
+			</div>
+		</div>
+		<div class="yrm-accordion-content yrm-hide-content">
+			<div class="row row-static-margin-bottom">
+				<div class="col-xs-5">
+					<label class="control-label-checkbox" for="hover-effect"><?php _e('Select timezone', YRM_LANG);?>:</label>
+				</div>
+				<div class="col-xs-4">
+					<?php echo wp_kses($functions::yrmSelectBox(ReadMoreData::getTimeZones(), $savedObj->getOptionValue('yrm-rm-time-zone'), array('name'=>"yrm-rm-time-zone",  'class'=>'yrm-js-select2')), $allowedTag);?>
+				</div>
+			</div>
+			<div class="row row-static-margin-bottom">
+				<div class="col-xs-5">
+					<label class="control-label-checkbox" for="yrm-rm-start-date"><?php _e('Start date', YRM_LANG);?>:</label>
+				</div>
+				<div class="col-xs-4">		
+					<input type="text" id="yrm-rm-start-date" class="form-control yrm-date-time-picker" name="yrm-rm-start-date" placeholder="Start date" value="<?php echo esc_attr($savedObj->getOptionValue('yrm-rm-start-date')); ?>">
+				</div>
+			</div>
+			<div class="row row-static-margin-bottom">
+				<div class="col-xs-5">
+					<label class="control-label-checkbox" for="yrm-rm-end-date"><?php _e('End date', YRM_LANG);?>:</label>
+				</div>
+				<div class="col-xs-4">		
+					<input type="text" id="yrm-rm-end-date" class="form-control yrm-date-time-picker" name="yrm-rm-end-date" placeholder="End Date" value="<?php echo esc_attr($savedObj->getOptionValue('yrm-rm-end-date')); ?>">
+				</div>
+			</div>
+		</div>
         <div class="row row-static-margin-bottom">
 			<div class="col-xs-5">
 				<label class="control-label-checkbox" for="show-only-devices"><?php _e('Show On Selected Devices', YRM_LANG);?>:</label>

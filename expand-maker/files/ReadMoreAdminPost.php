@@ -203,6 +203,10 @@ Class ReadMoreAdminPost {
 			$options['expander-font-family'] = $this->expmSanitizeData('expander-font-family');
 			$options['btn-custom-font-family'] = $this->expmSanitizeData('btn-custom-font-family');
 			$options['show-only-devices'] = $this->expmSanitizeData('show-only-devices');
+			$options['yrm-show-date-range'] = $this->expmSanitizeData('yrm-show-date-range', true);
+			$options['yrm-rm-time-zone'] = $this->expmSanitizeData('yrm-rm-time-zone');
+			$options['yrm-rm-start-date'] = $this->expmSanitizeData('yrm-rm-start-date');
+			$options['yrm-rm-end-date'] = $this->expmSanitizeData('yrm-rm-end-date');
 			$options['hidden-content-font-size-enable'] = $this->expmSanitizeData('hidden-content-font-size-enable');
 			$options['hidden-content-font-size'] = $this->expmSanitizeData('hidden-content-font-size');
 			$options['hide-content'] = $this->expmSanitizeData('hide-content');

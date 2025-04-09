@@ -41,6 +41,10 @@ Need help? Contact us at **edmon.parker@gmail.com** for support or custom develo
 
 
 == Changelog ==
+= 3.4.8.2 =
+* Added Show On Date Range option
+* Fix Export and Import functionality
+
 = 3.4.8.1 =
 * Added Security improrvement during export/import
 

@@ -6,6 +6,7 @@ yrmBackend.prototype.init = function() {
 	
 	//this.sortable();
 	this.deleteAjaxRequest();
+	this.datePicker();
 	this.typeDeleteAjaxRequest();
 	this.accordionContent();
 	this.proOptionsWrapper();
@@ -730,70 +731,86 @@ yrmBackend.prototype.copySortCode = function() {
 };
 
 yrmBackend.prototype.importData = function() {
-	var custom_uploader;
+	let custom_uploader;
 	jQuery('.yrm-import-button').click(function(e) {
 		e.preventDefault();
-		var ajaxNonce = jQuery(this).attr('data-ajaxNonce');
+		const ajaxNonce = jQuery(this).attr('data-ajaxNonce');
 
-		/* If the uploader object has already been created, reopen the dialog */
+		// Reuse uploader if it already exists
 		if (custom_uploader) {
 			custom_uploader.open();
 			return;
 		}
 
-		/* Extend the wp.media object */
-		custom_uploader = wp.media.frames.file_frame = wp.media({
-			titleFF: 'Select Export File',
+		custom_uploader = wp.media({
+			title: 'Select JSON Export File',
 			button: {
-				text: 'Select Export File'
+				text: 'Use This File'
 			},
-			multiple: false,
-			library : {type : 'text/csv'}
+			multiple: false
 		});
-		/* When a file is selected, grab the URL and set it as the text field's value */
-		custom_uploader.on('select', function() {
-			var attachment = custom_uploader.state().get('selection').first().toJSON();
 
-			var data = {
+		custom_uploader.on('select', function() {
+			const attachment = custom_uploader.state().get('selection').first().toJSON();
+
+			if (!attachment.url.endsWith('.json')) {
+				alert('Please select a valid .json file.');
+				return;
+			}
+
+			const data = {
 				action: 'yrm_import_data',
 				ajaxNonce: ajaxNonce,
 				attachmentUrl: attachment.url
 			};
+
 			jQuery('.yrm-spinner').removeClass('yrm-hide-content');
-			jQuery.post(ajaxurl, data, function(response,d) {
-				window.location.reload();
-				jQuery('.yrm-spinner').removeClass('yrm-hide-content');
+
+			jQuery.post(ajaxurl, data, function(response) {
+				jQuery('.yrm-spinner').addClass('yrm-hide-content');
+
+				if (response.success) {
+					alert('Data imported successfully!');
+					window.location.reload();
+				} else {
+					alert('Import failed: ' + (response.data || 'Unknown error'));
+				}
 			});
 		});
-		/* Open the uploader dialog */
+
 		custom_uploader.open();
 	});
 };
 
+
 yrmBackend.prototype.export = function() {
-	var exportButton = jQuery('.yrm-exprot-button');
+	const exportButton = jQuery('.yrm-exprot-button');
 
-	if (!exportButton.length) {
-		return false;
-	}
+	if (!exportButton.length) return;
 
-	exportButton.bind('click', function() {
-		var data = {
+	exportButton.on('click', function() {
+		jQuery('.yrm-spinner').removeClass('yrm-hide-content');
+
+		const postData = {
 			action: 'yrm_export',
-			beforeSend: function() {
-				jQuery('.yrm-spinner').removeClass('yrm-hide-content');
-			},
 			ajaxNonce: yrmBackendData.nonce
 		};
 
-		jQuery.post(ajaxurl, data, function(data) {
-			var hiddenElement = document.createElement('a');
+		jQuery.post(ajaxurl, postData, function(response) {
 			jQuery('.yrm-spinner').addClass('yrm-hide-content');
-			hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(data);
-			hiddenElement.target = '_blank';
-			hiddenElement.download = 'readMoreExportData.csv';
-			hiddenElement.click()
-		})
+
+			const blob = new Blob([JSON.stringify(response, null, 2)], { type: 'application/json' });
+			const url = URL.createObjectURL(blob);
+
+			const hiddenElement = document.createElement('a');
+			hiddenElement.href = url;
+			hiddenElement.download = 'readMoreExportData.json';
+			document.body.appendChild(hiddenElement);
+			hiddenElement.click();
+			document.body.removeChild(hiddenElement);
+
+			URL.revokeObjectURL(url);
+		});
 	});
 };
 
@@ -1057,6 +1074,11 @@ yrmBackend.prototype.typeDeleteAjaxRequest = function () {
 		});
 	});
 };
+
+yrmBackend.prototype.datePicker = function() {
+	jQuery("#yrm-rm-start-date").datepicker();
+	jQuery("#yrm-rm-end-date").datepicker();
+}
 
 yrmBackend.prototype.deleteAjaxRequest = function() {
 

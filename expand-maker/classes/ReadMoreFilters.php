@@ -36,8 +36,24 @@ class ReadMoreFilters
 		}
 		add_filter('mce_external_plugins', array($this, 'editorButton'));
 		add_action('media_buttons', array($this, 'yrmMediaButton'));
+		add_filter('upload_mimes', array($this, 'yrm_allow_json_uploads'));
+		add_filter('wp_check_filetype_and_ext', array($this, 'wp_check_filetype_and_ext'), 10, 4);
 
 		return true;
+	}
+
+	public function wp_check_filetype_and_ext($data, $file, $filename, $mimes) {
+		$filetype = wp_check_filetype($filename, $mimes);
+		return [
+			'ext'             => $filetype['ext'],
+			'type'            => $filetype['type'],
+			'proper_filename' => $data['proper_filename'],
+		];
+	}
+
+	public function yrm_allow_json_uploads($mimes) {
+	    $mimes['json'] = 'application/json';
+	    return $mimes;
 	}
 
 	public function editorButton($buttons)
