@@ -1078,6 +1078,7 @@ yrmBackend.prototype.typeDeleteAjaxRequest = function () {
 yrmBackend.prototype.datePicker = function() {
 	jQuery("#yrm-rm-start-date").datepicker();
 	jQuery("#yrm-rm-end-date").datepicker();
+	jQuery(".yrm-date-time-picker").datepicker();
 }
 
 yrmBackend.prototype.deleteAjaxRequest = function() {

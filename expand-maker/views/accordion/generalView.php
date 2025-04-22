@@ -14,6 +14,9 @@
         <div class="col-md-12">
             <?php require_once(dirname(__FILE__).'/customFunctionality.php'); ?>
         </div>
+        <div class="col-md-12">
+            <?php require_once(dirname(__FILE__).'/advancedSettings.php'); ?>
+        </div>
     </div>
     <div class="col-md-3">
         <?php require_once(dirname(__FILE__)."/AccordionUpgreade.php")?>

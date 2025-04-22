@@ -2,7 +2,7 @@
 Contributors: edmon.parker  
 Tags: read more, accordion, content toggle, expand content  
 Requires at least: 3.8  
-Tested up to: 6.7  
+Tested up to: 6.8
 Stable tag: 3.4.6 
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html  
@@ -13,6 +13,8 @@ Easily hide or reveal long content with Read More buttons, accordions, and popup
 The **Read More & Accordion** plugin is a flexible tool designed to help you manage lengthy content by using expandable "Read More" buttons, accordions, or popups. This keeps your site visually clean and easy to navigate while still providing access to all your information.
 
 Ideal for creating FAQs, managing long blog posts, or showing detailed descriptions in an organized format, the plugin makes it easy for users to interact with your content. Plus, the plugin enhances SEO as search engines can index all your hidden content.
+
+https://www.youtube.com/watch?v=_C-9v1prGh8&ab_channel=EdmonParker
 
 == Features ==
 - **Read More Buttons:** Collapse or expand content using customizable buttons.
@@ -41,6 +43,9 @@ Need help? Contact us at **edmon.parker@gmail.com** for support or custom develo
 
 
 == Changelog ==
+= 3.4.8.9 =
+* Added Accordion Show for selected devices
+* Added Accordion Show on Date Range
 = 3.4.8.2 =
 * Added Show On Date Range option
 * Fix Export and Import functionality

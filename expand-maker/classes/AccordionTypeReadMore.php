@@ -3,7 +3,11 @@ require_once(YRM_CLASSES.'ReadMoreTypes.php');
 
 class AccordionTypeReadMore extends ReadMoreTypes {
 	public function renderContent() {
+		
 		$this->prepareSavedValue();
+		if (!$this->allowRender($this)) {
+			return "";
+		}
 		$tabs = $this->getOptionValue('yrm-accordion');
 		require_once(dirname(__FILE__).'/ReadMoreAccordionView.php');
 
@@ -15,6 +19,26 @@ class AccordionTypeReadMore extends ReadMoreTypes {
         $content .= '<div class="after-accordion-content">'.wp_kses($afterContent, ReadMoreAdminHelper::getAllowedTags()).'</div>';
 
         return $content;
+	}
+
+	public static function allowRender($shortcodeData) {
+		if (is_admin()) {
+			return true;
+		}
+		$id = $shortcodeData->getId();
+		$status = ReadMore::isActiveReadMore($id);
+
+		if(!$status) {
+			return false;
+		}
+
+
+		$status = apply_filters('yrmAccordionAdvanced', true, $shortcodeData);
+		if (!$status) {
+			return false;
+		}
+
+		return true;
 	}
 
 	public function __construct() {
@@ -55,6 +79,13 @@ class AccordionTypeReadMore extends ReadMoreTypes {
 		$options[] = array('name' => 'yrm-accordion-before-content', 'type' => 'yrm', 'defaultValue' => '');
 		$options[] = array('name' => 'yrm-accordion-after-content', 'type' => 'yrm', 'defaultValue' => '');
 		$options[] = array('name' => 'yrm-accordion-click-sound', 'type' => 'yrm', 'defaultValue' => YRM_SOUNDS_URL."/click.mp3");
+		$options[] = array('name' => 'yrm-accordion-show-only-devices', 'type' => 'checkbox', 'defaultValue' => '');
+		$options[] = array('name' => 'yrm-accordion-hide-content', 'type' => 'checkbox', 'defaultValue' => '');
+		$options[] = array('name' => 'yrm-accordion-selected-devices', 'type' => 'yrm', 'defaultValue' => '');
+		$options[] = array('name' => 'yrm-accordion-show-date-range', 'type' => 'checkbox', 'defaultValue' => '');
+		$options[] = array('name' => 'yrm-accordion-rm-time-zone', 'type' => 'text', 'defaultValue' => '');
+		$options[] = array('name' => 'yrm-accordion-rm-start-date', 'type' => 'text', 'defaultValue' => '');
+		$options[] = array('name' => 'yrm-accordion-rm-end-date', 'type' => 'text', 'defaultValue' => '');
 
 		return $options;
 	}
