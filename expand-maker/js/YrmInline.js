@@ -39,12 +39,13 @@ YrmInline.prototype.init = function () {
 
 		currentButton.unbind('click').bind('click', function () {
             var easings = data['yrm-animate-easings'];
+			var iconType = data['yrm-button-icon-type'];
 
 			var currentButtonWrapper = currentButton.parent('.yrm-btn-wrapper');
 			var contentGradient = jQuery('.yrm-content-gradient-'+id, currentButtonWrapper);
 
             var toggleContentId = jQuery(this).attr('data-rel');
-            var arrowImage = jQuery(this).find('.yrm-arrow-img').first();
+            var arrowImage = jQuery(this).find('.yrm-arrow-img-icon').first();
 			position = jQuery('#'+toggleContentId).offset().top;
             var currentStatus = JSON.parse(jQuery("#"+toggleContentId).attr('data-show-status'));
 			var triggerArgs = {'id': id, 'currentElement': currentButton};
@@ -70,7 +71,12 @@ YrmInline.prototype.init = function () {
 		            jQuery("html ,body").animate({scrollTop: currentScroll-scrollDifference}, duration, easings);
 	            }
 
-	            arrowImage.removeClass('yrm-rotate-180');
+	            if (iconType == 'icon') {
+					arrowImage.removeClass(arrowImage.data('close')).addClass(arrowImage.data('open'));
+				}
+				else {
+					arrowImage.removeClass('yrm-rotate-180');
+				}
 	            jQuery(this).attr('title', moreTitle);
 	            jQuery(this).parent().removeClass('yrm-less-button-wrapper').addClass('yrm-more-button-wrapper');
 				jQuery(this).find(".yrm-button-text-"+id).text(moreName);
@@ -87,7 +93,13 @@ YrmInline.prototype.init = function () {
 						currentButton.remove();
 					}
 				});
-				arrowImage.addClass('yrm-rotate-180');
+				if (iconType == 'icon') {
+					arrowImage.removeClass(arrowImage.data('open')).addClass(arrowImage.data('close'));
+			
+				}
+				else {
+					arrowImage.addClass('yrm-rotate-180');
+				}
 				jQuery(this).attr('title', lessTitle);
 	            jQuery(this).parent().addClass('yrm-less-button-wrapper').removeClass('yrm-more-button-wrapper');
 				jQuery(this).find(".yrm-button-text-"+id).text(lessName);

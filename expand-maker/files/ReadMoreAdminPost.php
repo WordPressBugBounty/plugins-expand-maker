@@ -240,10 +240,12 @@ Class ReadMoreAdminPost {
 
 			$options['show-content-gradient-color'] = $this->expmSanitizeData('show-content-gradient-color');
 			$options['enable-button-icon'] = $this->expmSanitizeData('enable-button-icon');
+			$options['yrm-button-icon-type'] = $this->expmSanitizeData('yrm-button-icon-type');
 			$options['arrow-icon-width'] = $this->expmSanitizeData('arrow-icon-width');
 			$options['arrow-icon-height'] = $this->expmSanitizeData('arrow-icon-height');
 			$options['arrow-icon-alignment'] = $this->expmSanitizeData('arrow-icon-alignment');
 			$options['yrm-button-icon'] = $this->expmSanitizeData('yrm-button-icon');
+			$options['yrm-button-icons'] = $this->expmSanitizeData('yrm-button-icons');
 
 
 			$pagesOptions = array(

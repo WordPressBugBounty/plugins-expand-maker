@@ -64,7 +64,7 @@
 					$icon = $this->getOptionValue('yrm-accordion-icons');
 					list($openClass, $closeClass) = explode("_", $icon);
 				?>
-				<?php echo ReadMoreFunctions::yrmSelectBox($params['accordionOpenCloseIcons'], esc_attr($icon), array('name' => 'yrm-accordion-icons', 'class' => 'yrm-js-select2 yrm-accordion-icons'));?><br>
+				<?php echo ReadMoreFunctions::yrmSelectBox($params['accordionOpenCloseIcons'], esc_attr($icon), array('name' => 'yrm-accordion-icons', 'class' => 'yrm-js-select2 yrm-button-icons'));?><br>
 			</div>
 			<div class="col-xs-1 yrm-accordion-preview">
 				<span class="icons-preview-span"><?php _e('Preview') ?></span>

@@ -7,6 +7,7 @@ yrmBackend.prototype.init = function() {
 	//this.sortable();
 	this.deleteAjaxRequest();
 	this.datePicker();
+	this.changeIcons();
 	this.typeDeleteAjaxRequest();
 	this.accordionContent();
 	this.proOptionsWrapper();
@@ -1074,6 +1075,21 @@ yrmBackend.prototype.typeDeleteAjaxRequest = function () {
 		});
 	});
 };
+
+yrmBackend.prototype.changeIcons = function () {
+	var icons = jQuery('.yrm-button-icons');
+
+	if (!icons) {
+		return  false;
+	}
+
+	icons.bind('change', function () {
+		var value = jQuery(this).val();
+		var splittedIcons = value.split('_');
+		jQuery('.icon-open-wrapper').html('<i class="fa '+splittedIcons[0]+'"></i>')
+		jQuery('.icon-close-wrapper').html('<i class="fa '+splittedIcons[1]+'"></i>')
+	})
+}
 
 yrmBackend.prototype.datePicker = function() {
 	jQuery("#yrm-rm-start-date").datepicker();

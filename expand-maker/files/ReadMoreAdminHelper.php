@@ -160,11 +160,11 @@ class ReadMoreAdminHelper {
 		return $button;
 	}
 
-    public static function newIdeasButton() {
+    public static function newIdeasButton($label = 'Submit New Idea') {
         $button = '<a href="'.esc_attr(YRM_SUPPORT_URL).'" target="_blank">
                     <button type="button" id="yrm-submit-idea-button" class="yrm-button-blue">
                         <i class="glyphicon glyphicon-comment"></i>
-                        Submit New Idea
+                        '.esc_attr($label).'
                     </button>
                 </a>';
 

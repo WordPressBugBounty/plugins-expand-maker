@@ -1057,6 +1057,48 @@ class ReadMoreData {
 				)
 			)
 		);
+		
+		$iconsMode = array(
+			'template' => array(
+				'fieldWrapperAttr' => array(
+					'class' => 'col-xs-5 yrm-choice-option-wrapper'
+				),
+				'labelAttr' => array(
+					'class' => 'col-xs-5 yrm-choice-option-wrapper yrm-sub-option-label'
+				),
+				'groupWrapperAttr' => array(
+					'class' => 'row form-group yrm-choice-wrapper yrm-choice-inputs-wrapper'
+				)
+			),
+			'buttonPosition' => 'right',
+			'nextNewLine' => true,
+			'fields' => array(
+				array(
+					'attr' => array(
+						'type' => 'radio',
+						'name' => 'yrm-button-icon-type',
+						'class' => 'dimension-mode',
+						'data-attr-href' => 'yrm-button-icon-image',
+						'value' => 'image'
+					),
+					'label' => array(
+						'name' => __('Image', YRM_LANG).':'
+					)
+				),
+				array(
+					'attr' => array(
+						'type' => 'radio',
+						'name' => 'yrm-button-icon-type',
+						'class' => 'dimension-mode',
+						'data-attr-href' => 'yrm-button-icon-wrapper',
+						'value' => 'icon'
+					),
+					'label' => array(
+						'name' => __('Icon', YRM_LANG).':'
+					)
+				)
+			)
+		);
 
 		$accordionModes = array(
 			'template' => array(
@@ -1253,6 +1295,14 @@ class ReadMoreData {
         	'fa-hand-point-right_fa-hand-point-down' => 'Type 4',
         	'fa-caret-up_fa-caret-down' => 'Type 5',
         );
+        
+		$buttonOpenCloseIcons = array(
+        	'fa-chevron-right_fa-chevron-down' => 'Type 1',
+        	'fa-plus_fa-minus' => 'Type 2',
+        	'fa-check_fa-xmark' => 'Type 3',
+        	'fa-hand-point-right_fa-hand-point-up' => 'Type 4',
+        	'fa-caret-up_fa-caret-down' => 'Type 5',
+        );
 
 		$arrays = array(
 			'hiddenContentLineHeight' => $hiddenContentLineHeight,
@@ -1269,6 +1319,7 @@ class ReadMoreData {
 			'userRoles' => self::getAllUserRoles(),
 			'devices' => $devices,
 			'dimensionsMode' => $dimensionsMode,
+			'iconsMode' => $iconsMode,
 			'bgImageSize' => $bgImageSize,
 			'bgImageRepeat' => $bgImageRepeat,
 			'themesPopup' => $themesPopup,
@@ -1278,6 +1329,7 @@ class ReadMoreData {
 			'textDecorationType' => $textDecorationType,
 			'textDecorationStyle' => $textDecorationStyle,
 			'accordionOpenCloseIcons' => $accordionOpenCloseIcons,
+			'buttonOpenCloseIcons' => $buttonOpenCloseIcons,
 			'borderStyle' => $borderStyle
 		);
 
@@ -1398,6 +1450,7 @@ class ReadMoreData {
 			'more-button-title' => __('Read more', YRM_LANG),
 			'less-button-title' => __('Less more', YRM_LANG),
 			'yrm-dimension-mode' => 'classicMode',
+			'yrm-button-icon-type' => 'icon',
 			'yrm-button-padding-top' => '0',
 			'yrm-button-click-sound' => YRM_SOUNDS_URL."/click.mp3",
 			'yrm-button-padding-right' => '0',

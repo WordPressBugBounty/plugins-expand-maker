@@ -1,5 +1,7 @@
 <?php
 $savedIcon = $savedObj->getOptionValue('yrm-button-icon');
+$params = ReadMoreData::params();
+
 $hideRemoveButton = 'yrm-hide';
 if($savedIcon != YRM_BUTTON_ICON_URL) {
     $hideRemoveButton = '';
@@ -289,45 +291,72 @@ $allowedTag = ReadMoreAdminHelper::getAllowedTags();
             </div>
         </div>
         <div class="yrm-accordion-content yrm-hide-content">
-            <div class="row row-static-margin-bottom">
-                <div class="col-xs-5">
-                    <label class="control-label-checkbox" for="arrow-icon-width"><?php _e('Icon width', YRM_LANG);?>:</label>
-                </div>
-                <div class="col-xs-3">
-                    <input type="text" id="arrow-icon-width" class="form-control" name="arrow-icon-width" value="<?php echo esc_attr($savedObj->getOptionValue('arrow-icon-width')); ?>">
-                </div>
-            </div>
-            <div class="row row-static-margin-bottom">
-                <div class="col-xs-5">
-                    <label class="control-label-checkbox" for="arrow-icon-height"><?php _e('Icon height', YRM_LANG);?>:</label>
-                </div>
-                <div class="col-xs-3">
-                    <input type="text" id="arrow-icon-height" class="form-control" name="arrow-icon-height" value="<?php echo esc_attr($savedObj->getOptionValue('arrow-icon-height')); ?>">
-                </div>
-            </div>
-	        <div class="row row-static-margin-bottom">
-		        <div class="col-xs-5">
-			        <label class="control-label-checkbox" for="arrow-icon-alignment"><?php _e('Icon alignment', YRM_LANG);?>:</label>
-		        </div>
-		        <div class="col-xs-3">
-			        <?php echo wp_kses($functions::yrmSelectBox($params['arrowIconAlignment'], esc_attr($savedObj->getOptionValue('arrow-icon-alignment')), array('name'=>"arrow-icon-alignment", 'class'=>'yrm-js-select2', 'id'=>'arrow-icon-alignment')), $allowedTag);?>
-		        </div>
-	        </div>
-            <div class="row row-static-margin-bottom">
-                <div class="col-xs-5">
-                    <label class="control-label-checkbox" for=""><?php _e('Button image', YRM_LANG);?>:</label>
-                </div>
-                <div class="col-xs-1">
-                    <input type="hidden" id="yrm-button-icon" name="yrm-button-icon" data-default-url="<?php echo YRM_BUTTON_ICON_URL; ?>" value="<?php echo esc_attr($savedObj->getOptionValue('yrm-button-icon')); ?>">
-                    <div class="yrm-icon-container-preview" style="background-image: url(<?php echo esc_attr($savedObj->getOptionValue('yrm-button-icon')); ?>)"></div>
-                </div>
-                <div class="col-xs-2">
-                    <input id="js-button-upload-image-button" class="btn btn-sm btn-default" type="button" value="<?php _e('Change image'); ?>">
-                </div>
-                <div class="col-xs-1 yrm-remove-changed-image-wrapper <?php echo esc_attr($hideRemoveButton); ?>">
-                    <input id="js-button-upload-image-remove-button" class="btn btn-sm btn-danger" type="button" value="<?php _e('Remove'); ?>">
-                </div>
-            </div>
+			<div class="yrm-dimensions-mode yrm-multichoice-wrapper">
+				<?php
+					$multipleChoiceButton = new ExpmMultipleChoiceButton($params['iconsMode'], $savedObj->getOptionValue('yrm-button-icon-type'));
+					echo wp_kses($multipleChoiceButton, $allowedTag);
+				?>
+			</div>
+			<div id="yrm-button-icon-image" class="yrm-hide-content yrm-sub-option">
+				
+				<div class="row row-static-margin-bottom">
+					<div class="col-xs-5">
+						<label class="control-label-checkbox" for=""><?php _e('Button image', YRM_LANG);?>:</label>
+					</div>
+					<div class="col-xs-1">
+						<input type="hidden" id="yrm-button-icon" name="yrm-button-icon" data-default-url="<?php echo YRM_BUTTON_ICON_URL; ?>" value="<?php echo esc_attr($savedObj->getOptionValue('yrm-button-icon')); ?>">
+						<div class="yrm-icon-container-preview" style="background-image: url(<?php echo esc_attr($savedObj->getOptionValue('yrm-button-icon')); ?>)"></div>
+					</div>
+					<div class="col-xs-2">
+						<input id="js-button-upload-image-button" class="btn btn-sm btn-default" type="button" value="<?php _e('Change image'); ?>">
+					</div>
+					<div class="col-xs-1 yrm-remove-changed-image-wrapper <?php echo esc_attr($hideRemoveButton); ?>">
+						<input id="js-button-upload-image-remove-button" class="btn btn-sm btn-danger" type="button" value="<?php _e('Remove'); ?>">
+					</div>
+				</div>
+			</div>
+			<div id="yrm-button-icon-wrapper" class="yrm-hide-content yrm-sub-option">
+				<div class="row form-group">
+					<div class="col-xs-5">
+						<label class="control-label" for="yrm-accordion-icons"><?php _e('Open/Close icons', YRM_LANG);?></label>
+					</div>
+					<div class="col-xs-3">
+						<?php
+							$icon = $savedObj->getOptionValue('yrm-button-icons');
+							list($openClass, $closeClass) = explode("_", $icon);
+						?>
+						<?php echo ReadMoreFunctions::yrmSelectBox($params['buttonOpenCloseIcons'], esc_attr($icon), array('name' => 'yrm-button-icons', 'class' => 'yrm-js-select2 yrm-button-icons'));?><br>
+					</div>
+					<div class="col-xs-1 yrm-accordion-preview">
+						<span class="icons-preview-span"><?php _e('Preview') ?></span>
+						<div class="icon-open-wrapper">
+							<i class="fa <?php echo  esc_attr($openClass); ?>"></i>
+						</div>
+						<hr>
+						<div class="icon-close-wrapper">
+							<i class="fa <?php echo  esc_attr($closeClass); ?>"></i>
+						</div>
+					</div>
+				</div>
+				<div class="row row-static-margin-bottom">
+					<div class="col-xs-5">
+						<label class="control-label-checkbox" for="arrow-icon-alignment"><?php _e('Icon alignment', YRM_LANG);?>:</label>
+					</div>
+					<div class="col-xs-3">
+						<?php echo wp_kses($functions::yrmSelectBox($params['arrowIconAlignment'], esc_attr($savedObj->getOptionValue('arrow-icon-alignment')), array('name'=>"arrow-icon-alignment", 'class'=>'yrm-js-select2', 'id'=>'arrow-icon-alignment')), $allowedTag);?>
+					</div>
+				</div>
+				<div class="row row-static-margin-bottom">
+					<div class="col-xs-5">
+						<label class="control-label-checkbox" for="arrow-icon-width"><?php _e('Icon width', YRM_LANG);?>:</label>
+					</div>
+					<div class="col-xs-3">
+						<input type="text" id="arrow-icon-width" class="form-control" name="arrow-icon-width" value="<?php echo esc_attr($savedObj->getOptionValue('arrow-icon-width')); ?>">
+					</div>
+				</div>
+				
+			</div>
+	        
         </div>
         <!-- End button icon -->
         <!-- Start button hover -->

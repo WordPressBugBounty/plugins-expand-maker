@@ -20,5 +20,6 @@
     </div>
     <div class="col-md-3">
         <?php require_once(dirname(__FILE__)."/AccordionUpgreade.php")?>
+        <?php require_once(dirname(__FILE__)."/Additionalnfo.php")?>
     </div>
 </div>

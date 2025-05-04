@@ -246,6 +246,8 @@ class ReadMoreIncludeManager {
 		wp_register_script('readMoreJs', YRM_JAVASCRIPT.'yrmMore.js', array(), EXPM_VERSION);
 		wp_register_script('yrmMorePro', YRM_JAVASCRIPT.'yrmMorePro.js', array(), EXPM_VERSION);
 		wp_enqueue_script('readMoreJs');
+		wp_enqueue_style( 'yrm-awesome-free', '//use.fontawesome.com/releases/v6.2.0/css/all.css');
+		
 		if(YRM_PKG > 1) {
 			wp_register_script('yrmGoogleFonts', YRM_JAVASCRIPT.'yrmGoogleFonts.js');
 		//	wp_enqueue_script('yrmGoogleFonts');
@@ -397,12 +399,15 @@ class ReadMoreIncludeManager {
 			$arrowIconHeight = $dataObj->getOptionvalue('arrow-icon-height');
 			$buttonIcon = $dataObj->getOptionvalue('yrm-button-icon');
 
-			$generalStyles .= '.yrm-btn-wrapper-'.esc_html($id).' .yrm-arrow-img {';
+			$generalStyles .= '.yrm-btn-wrapper-'.esc_html($id).' .yrm-arrow-img  {';
 			$generalStyles .= 'width: '.esc_html($arrowIconWidth).'px;';
 			$generalStyles .= 'height: '.esc_html($arrowIconHeight).'px;';
 			$generalStyles .= 'background-image: url("'.esc_html($buttonIcon).'") '.esc_html($important).';';
 			$generalStyles .= 'background-size: cover;';
 			$generalStyles .= 'vertical-align: middle;';
+			$generalStyles .= '}';
+			$generalStyles .= ' .yrm-btn-wrapper-'.esc_html($id).' .yrm-arrow-img-icon{';
+			$generalStyles .= 'width: '.esc_html($arrowIconWidth).'px;';
 			$generalStyles .= '}';
 
 			$generalStyles .= '.yrm-btn-wrapper-'.esc_html($id).' {';
@@ -537,7 +542,17 @@ class ReadMoreIncludeManager {
 			$enableIcon = $dataObj->getOptionvalue('enable-button-icon');
 		}
 		if(!empty($enableIcon) && $dataObj->getOptionvalue('arrow-icon-alignment') === $position) {
-			$button .= "<span class='yrm-arrow-img'></span>";
+			$type = $dataObj->getOptionValue('yrm-button-icon-type');
+			
+			if ($type == 'icon') {
+				$icon = $dataObj->getOptionValue('yrm-button-icons');
+				list($openClass, $closeClass) = explode("_", $icon);
+				$button .= '<i class="yrm-arrow-img-icon fa '. esc_attr($openClass).'" data-open="'. esc_attr($openClass).'" data-close="'. esc_attr($closeClass).'"></i>';
+			}
+			else {
+				$button .= "<span class='yrm-arrow-img-icon yrm-arrow-img'></span>";
+			}
+			
 		}
 
 		return $button;
