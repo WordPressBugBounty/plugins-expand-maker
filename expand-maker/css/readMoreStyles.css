@@ -85,6 +85,9 @@
 }
 
 /* Tooltip styles start */
+.yrm-btn-wrapper.yrm-tooltip {
+	display: block !important;
+}
 .yrm-tooltip {
 	display: inline-block;
 	vertical-align: top;

@@ -2,7 +2,7 @@
 Contributors: edmon.parker  
 Tags: read more, accordion, content toggle, expand content  
 Requires at least: 3.8  
-Tested up to: 6.7  
+Tested up to: 6.8
 Stable tag: 3.4.6 
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html  
@@ -41,6 +41,10 @@ Need help? Contact us at **edmon.parker@gmail.com** for support or custom develo
 
 
 == Changelog ==
+= 3.4.8.6 =
+* Fix read more button and Tooltp align issue
+* Optimizations
+
 = 3.4.8.5 =
 * Added read more button 6 new icons
 * Accordion type admin panel improvements
@@ -48,7 +52,6 @@ Need help? Contact us at **edmon.parker@gmail.com** for support or custom develo
 = 3.4.8.3 =
 * Added Accordion Show for selected devices
 * Added Accordion Show on Date Range
-
 = 3.4.8.2 =
 * Added Show On Date Range option
 * Fix Export and Import functionality
