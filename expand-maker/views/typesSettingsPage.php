@@ -11,6 +11,10 @@ if(YRM_PKG == YRM_FREE_PKG) {
 	$proClassWrapper = 'yrm-pro-option';
     $newIdeas = ReadMoreAdminHelper::newIdeasButton();
 }
+$id = null;
+if (!empty($_GET['readMoreId'])) {
+	$id = $_GET['readMoreId'];
+}
 ?>
 <?php if(!empty($_GET['saved'])) : ?>
 	<div id="default-message" class="updated notice notice-success is-dismissible">
@@ -33,6 +37,9 @@ if(YRM_PKG == YRM_FREE_PKG) {
 						<?php if(YRM_PKG == YRM_FREE_PKG): ?>
 							<input type="button" class="yrm-upgrade-button-orange yrm-link-button" value="Upgrade to PRO version" onclick="window.open('<?php echo YRM_PRO_URL; ?>');">
 						<?php endif;?>
+						<?php if (!empty($id)):  ?>
+							<a class="yrm-crud button-primary" href="<?php echo admin_url();?>admin-post.php?action=read_more_clone&id=<?php echo esc_attr($id); ?>" >Clone<span class="glyphicon glyphicon-duplicate" style="margin-left: 5px"></span></a>
+						<?php endif; ?>
 						<input type="submit" class="button-primary" value="<?php _e('Save Changes', YRM_LANG); ?>">
 					</p>
 				</div>

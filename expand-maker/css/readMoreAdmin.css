@@ -1020,7 +1020,7 @@ label.yrm-label {
 }
 
 #yrm-report-problem-button {
-	margin-left: 5px;
+	margin-left: 12px;
 }
 
 .ycf-bootstrap-wrapper .page-numbers {
@@ -1330,4 +1330,13 @@ label.yrm-label {
     background-repeat: no-repeat;
     background-position: center;
 	margin-bottom: 10px;
+}
+
+.yrm-upgrade-button-orange.yrm-link-button {
+	margin-left: 8px;
+}
+
+.button-primary {
+	outline: 1px solid #2271b1;
+	margin: 0 5px !important;
 }

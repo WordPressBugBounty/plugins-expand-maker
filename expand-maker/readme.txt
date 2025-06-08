@@ -41,6 +41,11 @@ Need help? Contact us at **edmon.parker@gmail.com** for support or custom develo
 
 
 == Changelog ==
+= 3.4.8.7 =
+* Read more clone button to the Edit Page
+* Accordion clone button to the Edit Page
+* Admin panel improvements
+
 = 3.4.8.6 =
 * Fix read more button and Tooltp align issue
 * Optimizations
