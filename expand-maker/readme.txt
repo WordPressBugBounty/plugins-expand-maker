@@ -2,7 +2,7 @@
 Contributors: edmon.parker  
 Tags: read more, accordion, content toggle, expand content  
 Requires at least: 3.8  
-Tested up to: 6.8
+Tested up to: 6.8.1
 Stable tag: 3.4.6 
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html  
@@ -41,6 +41,10 @@ Need help? Contact us at **edmon.parker@gmail.com** for support or custom develo
 
 
 == Changelog ==
+= 3.4.8.8 =
+* fixed read more settings Labels
+* fixed clone button styles
+
 = 3.4.8.7 =
 * Read more clone button to the Edit Page
 * Accordion clone button to the Edit Page

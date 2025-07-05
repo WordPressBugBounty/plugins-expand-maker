@@ -1340,3 +1340,7 @@ label.yrm-label {
 	outline: 1px solid #2271b1;
 	margin: 0 5px !important;
 }
+
+.yrm-button-primary-clone {
+	margin-right: 2px !important;
+}

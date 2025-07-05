@@ -82,10 +82,10 @@ $allowedTag = ReadMoreAdminHelper::getAllowedTags();
 		<?php if(!ReadMore::RemoveOption('animation-duration')): ?>
 		<div class="row">
 			<div class="col-xs-5">
-				<label class="control-label" for="textinput"><?php _e('Animation Speed', YRM_LANG);?>:</label>
+				<label class="control-label" for="animation-duration"><?php _e('Animation Speed', YRM_LANG);?>:</label>
 			</div>
 			<div class="col-xs-4">
-			<input type="number" class="form-control input-md  expm-options-margin" name="animation-duration" value="<?php echo esc_attr($animationDuration)?>"><br>
+			<input type="number" id="animation-duration" class="form-control input-md  expm-options-margin" name="animation-duration" value="<?php echo esc_attr($animationDuration)?>"><br>
 			</div>
 			<div class="col-md-2 expm-option-info">(Miliseconds)</div>
 		</div>
@@ -123,12 +123,12 @@ $allowedTag = ReadMoreAdminHelper::getAllowedTags();
 		</div>
         <div class="row row-static-margin-bottom">
 			<div class="col-xs-5">
-				<label class="control-label" for="textinput"><?php _e('More Text', YRM_LANG);?>:
+				<label class="control-label" for="more-button-title"><?php _e('More Text', YRM_LANG);?>:
 					<?php echo yrm_info('If you remove the more="Read more" attribute from the "read more" shortcode, this will be evident.'); ?>
 				</label>
 			</div>
 			<div class="col-xs-4">
-				<input type="text" data-type="more" class="form-control yrm-button-title" name="more-button-title" value="<?php echo esc_attr($savedObj->getOptionValue('more-button-title')); ?>">
+				<input type="text" data-type="more" id="more-button-title" class="form-control yrm-button-title" name="more-button-title" value="<?php echo esc_attr($savedObj->getOptionValue('more-button-title')); ?>">
 			</div>
 		</div>
 		<div class="row row-static-margin-bottom">
@@ -142,12 +142,12 @@ $allowedTag = ReadMoreAdminHelper::getAllowedTags();
 		<?php if(!ReadMore::RemoveOption('less-button-title')): ?>
         <div class="row row-static-margin-bottom">
 			<div class="col-xs-5">
-				<label class="control-label" for="textinput"><?php _e('Less Text', YRM_LANG);?>:
+				<label class="control-label" for="less-button-title"><?php _e('Less Text', YRM_LANG);?>:
 					<?php echo yrm_info('If you remove the less="Read less" attribute from the "read more" shortcode, this will be evident.'); ?>
 				</label>
 			</div>
 			<div class="col-xs-4">
-				<input type="text" data-type="less" class="form-control yrm-button-title" name="less-button-title" value="<?php echo esc_attr($savedObj->getOptionValue('less-button-title')); ?>" placeholder="<?php _e('Less Text', YRM_LANG);?>">
+				<input type="text" data-type="less" id="less-button-title" class="form-control yrm-button-title" name="less-button-title" value="<?php echo esc_attr($savedObj->getOptionValue('less-button-title')); ?>" placeholder="<?php _e('Less Text', YRM_LANG);?>">
 			</div>
 		</div>
 		<div class="row row-static-margin-bottom">
