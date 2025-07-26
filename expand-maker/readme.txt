@@ -41,6 +41,9 @@ Need help? Contact us at **edmon.parker@gmail.com** for support or custom develo
 
 
 == Changelog ==
+= 3.4.8.9 =
+* Admin panel improvements
+
 = 3.4.8.8 =
 * fixed read more settings Labels
 * fixed clone button styles
