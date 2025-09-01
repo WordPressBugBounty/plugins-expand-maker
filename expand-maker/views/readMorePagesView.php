@@ -43,12 +43,13 @@
 	<div class="expm-wrapper">
 	<div class="read-more-promo" style="background: linear-gradient(135deg, #6a5acd, #3b5998); padding: 30px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); color: white; text-align: center; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; flex-wrap: wrap;">
   <div style="max-width: 600px;">
-    <h3 style="font-size: 26px; font-weight: bold; margin-bottom: 10px;">🔥 Special Offer – 40% Off the Read More PRO versions!</h3>
+    <h3 style="font-size: 26px; font-weight: bold; margin-bottom: 10px;">🔥 Share Your Feature Requests!</h3>
     <p style="font-size: 18px; line-height: 1.5; margin-bottom: 10px;">
-      Upgrade your content Free version with the <strong>Read More & Accordion Pro version</strong> ! For a limited time, enjoy <strong>40% off</strong> and make your WordPress site more dynamic and user-friendly.
+		Do you want to get new features related to <strong>Read More</strong>?
     </p>
-    <p style="font-size: 16px; margin-bottom: 20px;"><strong>Offer valid until September 1, 2025</strong> – act now!</p>
-    <a href="http://edmonsoft.com/" target="_blank" class="btn btn-primary" style="background-color: #ff6347; color: white; padding: 12px 25px; border-radius: 5px; text-decoration: none; font-size: 18px; transition: all 0.3s ease-in-out;">Get 40% Off Now</a>
+    <p style="font-size: 16px; margin-bottom: 20px;">We’re working hard and could add them as soon as possible in our next updates.</p>
+    <p style="font-size: 16px; margin-bottom: 20px;">💡 Be free and share your new feature suggestions with us — your feedback makes the plugin better!</p>
+    <a href="https://wordpress.org/support/plugin/expand-maker/" target="_blank" class="btn btn-primary" style="background-color: #ff6347; color: white; padding: 12px 25px; border-radius: 5px; text-decoration: none; font-size: 18px; transition: all 0.3s ease-in-out;">Send a Feature Request</a>
   </div>
 </div>
 

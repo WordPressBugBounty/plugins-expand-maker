@@ -41,6 +41,9 @@ Need help? Contact us at **edmon.parker@gmail.com** for support or custom develo
 
 
 == Changelog ==
+= 3.5.0 =
+* Added baner fore the feature suggestions
+
 = 3.4.8.9 =
 * Admin panel improvements
 
