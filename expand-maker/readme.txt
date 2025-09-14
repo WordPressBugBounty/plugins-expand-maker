@@ -41,6 +41,10 @@ Need help? Contact us at **edmon.parker@gmail.com** for support or custom develo
 
 
 == Changelog ==
+= 3.5.1 =
+* Added hidden content custom class name
+* Admin side URL fix
+
 = 3.5.0 =
 * Added baner fore the feature suggestions
 

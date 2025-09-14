@@ -159,6 +159,7 @@ Class ReadMoreAdminPost {
 		$options['show-content-gradient-position'] = $this->expmSanitizeData('show-content-gradient-position');
 		$options['yrm-more-button-custom-class'] = $this->expmSanitizeData('yrm-more-button-custom-class');
 		$options['yrm-less-button-custom-class'] = $this->expmSanitizeData('yrm-less-button-custom-class');
+		$options['yrm-hidden-content-custom-class'] = $this->expmSanitizeData('yrm-hidden-content-custom-class');
 		$options['yrm-custom-css'] = $this->expmSanitizeData('yrm-custom-css');
 		$options['yrm-editor-js'] = $this->expmSanitizeData('yrm-editor-js', 1);
 		$options['hide-button-after-click'] = $this->expmSanitizeData('hide-button-after-click', true);

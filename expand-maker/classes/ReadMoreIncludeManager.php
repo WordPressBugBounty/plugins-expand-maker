@@ -75,6 +75,8 @@ class ReadMoreIncludeManager {
 		$showStatus = 'false';
 		$inlineStyles = 'visibility: hidden;height: 0;';
 		$inline = @$dataObj->getOptionValue('add-button-next-content');
+		$hiddenContentClassName = $dataObj->getOptionvalue('yrm-hidden-content-custom-class');
+
 		if(!empty($inline)) {
 			$tag = 'span';
 		}
@@ -91,7 +93,7 @@ class ReadMoreIncludeManager {
 			$inlineHidden = 'yrm-inline-content';
 		}
 		$content = $this->filterToggleContent();
-		return "<$tag class='yrm-content yrm-content-".esc_attr($id)." ".esc_attr($hideClassName)." ".esc_attr($inlineHidden)."' id='".esc_attr($rel)."' data-id='".esc_attr($id)."' data-show-status='".esc_attr($showStatus)."' data-after-action='".esc_attr($dataAfterAction)."' style=\"$inlineStyles\">
+		return "<$tag class='yrm-content yrm-content-".esc_attr($id)." ".esc_attr($hideClassName)." ".esc_attr($inlineHidden)." ".esc_attr($hiddenContentClassName)."' id='".esc_attr($rel)."' data-id='".esc_attr($id)."' data-show-status='".esc_attr($showStatus)."' data-after-action='".esc_attr($dataAfterAction)."' style=\"$inlineStyles\">
 			<$tag id='yrm-inner-content-$rel' class='yrm-inner-content-wrapper yrm-cntent-".esc_attr($id)."'>$content</$tag>
 		</$tag>";
 	}

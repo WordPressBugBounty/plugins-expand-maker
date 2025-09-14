@@ -89,7 +89,7 @@ class ReadMoreFunctions {
 		<div class="clear"></div>
 		<div class="yrmAdminFooterShell">
 			Read More by Edmon Version:
-			<a target="_blank" href="http://wordpress.org/plugins/contact-form-by-supsystic/changelog/"><?php echo YRM_VERSION_TEXT; ?></a>
+			<a target="_blank" href="https://wordpress.org/support/plugin/expand-maker/"><?php echo YRM_VERSION_TEXT; ?></a>
 		</div>
 		<?php if(YRM_PKG == YRM_FREE_PKG):?>
 			<div class="yrmAdminFooterShell">|</div>

@@ -16,6 +16,12 @@
 				<input type="text" class="form-control" placeholder="<?php _e('Class Name', YRM_LANG); ?>" name="yrm-less-button-custom-class" id="yrm-less-button-custom-class" value="<?php echo esc_attr($savedObj->getOptionValue('yrm-less-button-custom-class'))?>">
 			</div>
 		</div>
+		<div class="row row-static-margin-bottom">
+			<label for="yrm-hidden-content-custom-class" class="yrm-label-of-switch col-md-6"><?php _e('Hidden Content Custom Class Name', YRM_LANG); ?>:</label>
+			<div class="col-md-6">
+				<input type="text" class="form-control" placeholder="<?php _e('Class Name', YRM_LANG); ?>" name="yrm-hidden-content-custom-class" id="yrm-hidden-content-custom-class" value="<?php echo esc_attr($savedObj->getOptionValue('yrm-hidden-content-custom-class'))?>">
+			</div>
+		</div>
 		<div class="row">
 			<div class="col-md-12">
 				<div>
