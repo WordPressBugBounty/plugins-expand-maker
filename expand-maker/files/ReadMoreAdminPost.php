@@ -60,6 +60,19 @@ Class ReadMoreAdminPost {
 
 	public function cloneReadMore() {
 
+
+		// 2) Must be logged in
+		if ( ! is_user_logged_in() ) {
+			wp_die('Unauthorized', 401);
+		}
+
+		// 3) Capability check (ընտրիր ճիշտ capability)
+		// Եթե սա admin-only է՝ manage_options
+		// Եթե editor էլ կարող է՝ edit_posts կամ edit_pages
+		if ( ! current_user_can('manage_options') ) {
+			wp_die('Forbidden', 403);
+		}
+		check_admin_referer('read_more_clone_action', 'read_more_nonce');
 		$id = (int)$_GET['id'];
 		$dataObj = new ReadMoreData();
 		$dataObj->setId($id);

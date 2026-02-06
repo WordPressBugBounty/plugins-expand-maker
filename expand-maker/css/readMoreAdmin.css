@@ -1273,10 +1273,11 @@ label.yrm-label {
     }
 }
 
-.yrm-button-blue {
+.yrm-upgrade-button-orange {
     animation: idea-pulse 2s infinite;
     transition: transform 0.3s ease-in-out;
 	margin-left: 15px !important;
+	margin-right: 8px !important;
 }
 
 /*Radio buttons css start*/
@@ -1343,4 +1344,25 @@ label.yrm-label {
 
 .yrm-button-primary-clone {
 	margin-right: 2px !important;
+}
+
+.yrm-shortcode-note-small {
+    margin-top: 6px;
+    padding: 6px 8px;
+    background: #f5f5f7;
+    border-left: 2px solid #b4b4b4;
+    font-size: 14px;
+    line-height: 1.35;
+    color: #555;
+}
+
+.yrm-shortcode-note-small strong {
+    font-size: 14px;
+}
+
+.yrm-shortcode-note-small code {
+    font-size: 12px;
+    background: #eee;
+    padding: 1px 3px;
+    border-radius: 2px;
 }

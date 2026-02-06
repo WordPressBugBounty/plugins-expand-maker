@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Read More
  * Description: Hide additional content by wrapping content in an [expander_maker] shortcode.
- * Version: 3.5.2
+ * Version: 3.5.6
  * Author: Edmon
  * Author URI: https://edmonsoft.com
  * License: GPLv2

@@ -71,7 +71,20 @@ $allowedTag = ReadMoreAdminHelper::getAllowedTags();
 							<input type="button" class="yrm-upgrade-button-orange yrm-link-button" value="Upgrade to PRO version" onclick="window.open('<?php echo YRM_PRO_URL; ?>');">
 						<?php endif;?>
 						<?php if (!empty($id)):  ?>
-							<a class="yrm-crud yrm-button-primary button-primary yrm-button-primary-clone" href="<?php echo admin_url();?>admin-post.php?action=read_more_clone&id=<?php echo esc_attr($id); ?>" >Clone<span class="glyphicon glyphicon-duplicate" style="margin-left: 5px"></span></a>
+							<a class="yrm-crud yrm-button-primary button-primary yrm-button-primary-clone"
+								href="<?php
+									echo esc_url(
+										wp_nonce_url(
+											admin_url('admin-post.php?action=read_more_clone&id=' . absint($id)),
+											'read_more_clone_action',
+											'read_more_nonce'
+										)
+									);
+								?>">
+								Clone
+								<span class="glyphicon glyphicon-duplicate" style="margin-left: 5px"></span>
+							</a>
+
 						<?php endif; ?><input type="submit" class="button-primary yrm-button-primary" value="<?php echo 'Save Changes'; ?>">
 					</p>
 				</div>

@@ -4,6 +4,12 @@ Class ReadMorePages {
 	public $functionsObj;
 	public $readMoreDataObj;
 
+	public $mainSavedObj;
+
+	public function setMainSavedObj($obj) {
+		$this->mainSavedObj = $obj;
+	}
+
 	public function __construct() {
 		
 	}
@@ -83,6 +89,7 @@ Class ReadMorePages {
 
 		if(file_exists($classPaths.$className.'.php')) {
 			require_once($classPaths.$className.'.php');
+		
 			$typeObj = new $className();
 			$YrmRemoveOptions = $typeObj->getRemoveOptions();
 		}
@@ -90,7 +97,7 @@ Class ReadMorePages {
 		$dataObj->setId($id);
 
 		$savedObj = $dataObj;
-        $typeObj->mainSavedObj = $savedObj;
+		$this->setMainSavedObj($savedObj);
 		$dataParams = $dataObj->getOptionsData();
 		$functions = $this->functionsObj;
 		require_once(YRM_VIEWS."readMoreAddNewButton.php");

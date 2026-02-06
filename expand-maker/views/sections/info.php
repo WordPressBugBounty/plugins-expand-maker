@@ -41,6 +41,13 @@
 				</div>
 			<?php endif; ?>
 		</div>
+		<div class="yrm-shortcode-note-small">
+			<strong>Tip:</strong>
+			You may remove <code>more=</code> and <code>less=</code>.
+			In that case the button labels will use the plugin settings.<br>
+			<code>[expander_maker id="1"]Your text[/expander_maker]</code>
+		</div>
+
 		<div class="row form-group">
 			<div class="col-md-12">
 				<label><?php _e('Join our Telegram Group')?></label>
