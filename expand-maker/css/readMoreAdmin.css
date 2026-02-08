@@ -230,29 +230,28 @@ a.wp-color-result {
 
 .yrm-pro-options-title {
 	position: absolute;
-	top: 50%;
-	left: 57%;
-	font-size: 32px;
+	top: 30%;
+	left: 54%;
+	font-size: 30px;
 	color: red;
 	opacity: 1;
 	overflow-wrap: break-word;
-	width: auto;
-	margin-top: -15px;
 }
 
 .yrm-type-title-pro {
-	position: absolute;
-	font-size: 32px;
+	font-size: 23px;
+	font-weight: 600;
 	color: red;
 	opacity: 1;
 	overflow-wrap: break-word;
 	width: auto;
 	margin-top: -15px;
 	-ms-transform: rotate(7deg);
-	-webkit-transform: rotate(7deg);
+	/* -webkit-transform: rotate(7deg); */
 	transform: rotate(36deg);
-	top: 40px;
-	right: -19px;
+	top: 32px;
+	right: -14px;
+	position: absolute;
 }
 
 .yrm-ext-title {
@@ -1326,7 +1325,7 @@ label.yrm-label {
 	margin-top: 10px;
     width: 100%;
     height: 200px;
-    background-image: url(../img/telegram.jpeg);
+    background-image: url(../img/telegram.jpg);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
